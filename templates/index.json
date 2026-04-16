@@ -55,47 +55,6 @@
         "padding_bottom_mobile": 16
       }
     },
-    "custom_hero": {
-      "type": "custom-hero",
-      "blocks": {
-        "trust_1": {
-          "type": "trust_item",
-          "settings": {
-            "text": "Over seventy trace minerals"
-          }
-        },
-        "trust_2": {
-          "type": "trust_item",
-          "settings": {
-            "text": "Loved by organic growers"
-          }
-        },
-        "trust_3": {
-          "type": "trust_item",
-          "settings": {
-            "text": "From farmers to you"
-          }
-        }
-      },
-      "block_order": [
-        "trust_1",
-        "trust_2",
-        "trust_3"
-      ],
-      "settings": {
-        "headline": "Wake Up\nYour Soil",
-        "subheadline": "Bio trace minerals that make every drop of fertilizer work harder.",
-        "body_text": "Flora Bella delivers commercial-grade trace minerals to home gardens. Strengthen soil health, support resilient plants, and bring deeper color and vitality to every bed, pot, and vegetable garden.",
-        "trust_box_heading": "Trusted for Over 25 Years.",
-        "trust_box_text": "Flora Bella works with naturally occurring mineral complexes that have supported commercial agriculture for decades. Now available delivered directly to your door.",
-        "button_primary_label": "Shop Bio Trace Mix",
-        "button_primary_url": "",
-        "button_secondary_label": "See Real Grower Results",
-        "button_secondary_url": "",
-        "show_buy_badge": true,
-        "buy_badge_label": "BUY NOW"
-      }
-    },
     "reassurance_strip": {
       "type": "reassurance-strip",
       "blocks": {
@@ -439,7 +398,6 @@
   },
   "order": [
     "birdlabs_hero_AMiadz",
-    "custom_hero",
     "reassurance_strip",
     "featured_product_hero",
     "benefits_grid",
