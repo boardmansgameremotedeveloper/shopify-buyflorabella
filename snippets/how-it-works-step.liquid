@@ -1,0 +1,34 @@
+{% comment %}
+  Usage: {% render 'how-it-works-step', step_number: block.settings.step_number, title: block.settings.title, description: block.settings.description, highlights: block.settings.highlights, image: block.settings.image, reversed: true %}
+{% endcomment %}
+<div class="fb-hiw-step{% if reversed %} fb-hiw-step--reversed{% endif %}">
+  <div class="fb-hiw-step__content">
+    <div class="fb-hiw-step__number">{{ step_number | default: '01' }}</div>
+    <h3 class="fb-hiw-step__title">{{ title }}</h3>
+    <p class="fb-hiw-step__desc">{{ description }}</p>
+    {%- if highlights != blank -%}
+      <ul class="fb-hiw-step__list">
+        {%- assign items = highlights | split: '|' -%}
+        {%- for item in items -%}
+          {%- if item != blank -%}
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2.5" style="flex-shrink:0;margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+              {{ item | strip }}
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </div>
+  <div class="fb-hiw-step__visual">
+    {%- if image != blank -%}
+      {{ image | image_url: width: 700 | image_tag: loading: 'lazy', alt: title }}
+    {%- elsif image_url != blank -%}
+      <img src="{{ image_url }}" alt="{{ title }}" loading="lazy">
+    {%- else -%}
+      <div class="fb-hiw-step__placeholder">
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="1" opacity="0.3"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/></svg>
+      </div>
+    {%- endif -%}
+  </div>
+</div>

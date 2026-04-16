@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "main_techdocs": {
+      "type": "main-technical-docs",
+      "blocks": {
+        "app_guide": {
+          "type": "application_guide",
+          "settings": {
+            "title": "Application Rates",
+            "application_rates": "Garden beds: 1–2 tsp per gallon of water|Containers & pots: ½ tsp per gallon|Lawn application: 2 tsp per gallon, diluted|Seedling trays: ¼ tsp per gallon",
+            "notes": "Apply every 2–4 weeks during active growing season. Reduce to monthly during dormancy."
+          }
+        },
+        "analysis": {
+          "type": "analysis_table",
+          "settings": {
+            "title": "Guaranteed Analysis",
+            "col1_label": "Mineral",
+            "col2_label": "Amount per serving",
+            "col3_label": "% DV",
+            "rows": "Magnesium (as Mg), 50 mg, 12%|Iron (as Fe), 18 mg, 100%|Zinc (as Zn), 11 mg, 100%|Copper (as Cu), 0.9 mg, 100%|Manganese (as Mn), 2.3 mg, 100%|Boron (as B), 1 mg, *",
+            "footnote": "* Daily Value not established."
+          }
+        },
+        "storage": {
+          "type": "content_block",
+          "settings": {
+            "title": "Storage & Handling",
+            "content": "Store in a cool, dry location away from direct sunlight. Keep sealed when not in use. Shelf life is 24 months from manufacture date when stored correctly."
+          }
+        },
+        "safety": {
+          "type": "content_block",
+          "settings": {
+            "title": "Safety Information",
+            "content": "Flora Bella is derived from naturally occurring mineral deposits and is safe for use in organic growing systems. Not intended for human or animal consumption. Keep out of reach of children. In case of eye contact, rinse thoroughly with water."
+          }
+        }
+      },
+      "block_order": ["app_guide", "analysis", "storage", "safety"],
+      "settings": {
+        "heading": "Application Guide & Technical Documentation",
+        "subheading": "Everything you need to apply Flora Bella correctly and confidently"
+      }
+    }
+  },
+  "order": ["main_techdocs"]
+}

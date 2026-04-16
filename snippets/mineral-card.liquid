@@ -1,0 +1,11 @@
+{% comment %}
+  Usage: {% render 'mineral-card', symbol: block.settings.symbol, name: block.settings.name, atomic_number: block.settings.atomic_number, benefit: block.settings.benefit %}
+{% endcomment %}
+<div class="fb-mineral-card">
+  <div class="fb-mineral-card__atomic">{{ atomic_number }}</div>
+  <div class="fb-mineral-card__symbol">{{ symbol }}</div>
+  <div class="fb-mineral-card__name">{{ name }}</div>
+  {%- if benefit != blank -%}
+    <div class="fb-mineral-card__tooltip">{{ benefit }}</div>
+  {%- endif -%}
+</div>

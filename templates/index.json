@@ -1,75 +1,215 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "custom_hero": {
+      "type": "custom-hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "trust_1": { "type": "trust_item", "settings": { "text": "Over seventy trace minerals" } },
+        "trust_2": { "type": "trust_item", "settings": { "text": "Loved by organic growers" } },
+        "trust_3": { "type": "trust_item", "settings": { "text": "From farmers to you" } }
+      },
+      "block_order": ["trust_1", "trust_2", "trust_3"],
+      "settings": {
+        "headline": "Wake Up\nYour Soil",
+        "subheadline": "Bio trace minerals that make every drop of fertilizer work harder.",
+        "body_text": "Flora Bella delivers commercial-grade trace minerals to home gardens. Strengthen soil health, support resilient plants, and bring deeper color and vitality to every bed, pot, and vegetable garden.",
+        "trust_box_heading": "Trusted for Over 25 Years.",
+        "trust_box_text": "Flora Bella works with naturally occurring mineral complexes that have supported commercial agriculture for decades. Now available delivered directly to your door.",
+        "button_primary_label": "Shop Bio Trace Mix",
+        "button_secondary_label": "See Real Grower Results",
+        "show_buy_badge": true,
+        "buy_badge_label": "BUY NOW"
+      }
+    },
+    "reassurance_strip": {
+      "type": "reassurance-strip",
+      "blocks": {
+        "r1": { "type": "item", "settings": { "icon": "truck", "icon_color": "#d4ff00", "icon_bg": "#d4ff00", "text": "Delivered to your doorstep with care" } },
+        "r2": { "type": "item", "settings": { "icon": "shield", "icon_color": "#ff0080", "icon_bg": "#ff0080", "text": "Secure checkout with major cards and PayPal" } },
+        "r3": { "type": "item", "settings": { "icon": "message", "icon_color": "#90ffd9", "icon_bg": "#90ffd9", "text": "Support from real growers, not bots" } }
+      },
+      "block_order": ["r1", "r2", "r3"],
+      "settings": {}
+    },
+    "featured_product_hero": {
+      "type": "featured-product-hero",
+      "blocks": {
+        "f1": { "type": "feature", "settings": { "title": "70+ Trace Minerals", "description": "A full spectrum of naturally occurring trace minerals in every application." } },
+        "f2": { "type": "feature", "settings": { "title": "Humic & Fulvic Acids", "description": "Supports mineral transport and soil structure at the microscopic level." } },
+        "f3": { "type": "feature", "settings": { "title": "Beneficial Biology", "description": "Natural microbes that awaken dormant soil potential and support root health." } }
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": {
+        "badge_text": "Best Seller",
+        "review_count": 487,
+        "eyebrow": "FEATURED PRODUCT",
+        "heading": "Flora Bella Bio Trace Mix",
+        "description": "Our signature blend of over 70 trace minerals, humic acid, fulvic acid, and beneficial biology. One addition to your watering routine transforms how your soil performs."
+      }
+    },
+    "benefits_grid": {
+      "type": "benefits-grid",
+      "blocks": {
+        "b1": { "type": "benefit", "settings": { "title": "Compost-Friendly Trace Minerals", "description": "Designed to work alongside compost and living soil systems — helping unlock what your soil is already capable of." } },
+        "b2": { "type": "benefit", "settings": { "title": "Ancient + Mineral-Dense", "description": "Made from mineral deposits formed over thousands of years — carrying complexity you can't replicate in a lab." } },
+        "b3": { "type": "benefit", "settings": { "title": "Born in the USA", "description": "Sourced and crafted in the United States, composted for 6–8 months to reawaken naturally occurring microbes and biology." } },
+        "b4": { "type": "benefit", "settings": { "title": "Iron-Ore Derived Blend", "description": "Encapsulated in an iron core, preserving the natural biology in the Bucatunna clay." } },
+        "b5": { "type": "benefit", "settings": { "title": "Biology Included", "description": "Designed to support beneficial microbes and nutrient cycling — the living foundation behind healthy, resilient soil." } },
+        "b6": { "type": "benefit", "settings": { "title": "Handled with Care + Lab Verified", "description": "Gently processed and packaged with care, with quality checks to support consistency and peace of mind." } }
+      },
+      "block_order": ["b1", "b2", "b3", "b4", "b5", "b6"],
+      "settings": {
+        "eyebrow": "WHY GROWERS CHOOSE FLORA BELLA",
+        "heading": "Built Different. Works Different.",
+        "subheading": "Six reasons growers trust Flora Bella season after season"
+      }
+    },
+    "how_it_works": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "step_number": "01",
+            "title": "Beneficial Microbes",
+            "description": "Naturally occurring beneficial bacteria that transform your soil ecosystem.",
+            "highlights": "Convert nutrients into forms plants can absorb|Support root development through natural growth signaling|Compete with harmful organisms in the root zone|Improve tolerance to environmental stress"
           }
         },
-        "button": {
-          "type": "buttons",
+        "s2": {
+          "type": "step",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "step_number": "02",
+            "title": "Humic Acid — Soil Structure & Retention",
+            "description": "Humic acids are large organic compounds that improve how your soil holds and delivers nutrition.",
+            "highlights": "Improve soil structure, aggregation, and aeration|Increase water-holding capacity|Bind and retain nutrients in the root zone|Support beneficial microbial activity"
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "step_number": "03",
+            "title": "Fulvic Acid — Mineral Transport",
+            "description": "Fulvic acids are smaller, highly bioavailable organic compounds that carry minerals where they're needed.",
+            "highlights": "Bind trace minerals into plant-usable forms|Facilitate movement of minerals through plant cell walls|Improve nutrient uptake efficiency"
           }
         }
       },
-      "block_order": [
-        "heading",
-        "button"
-      ],
+      "block_order": ["s1", "s2", "s3"],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "heading": "How Flora Bella Works With Your Soil",
+        "subheading": "A precise blend of over 70 trace minerals working in harmony with your soil"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "mineral_composition": {
+      "type": "mineral-composition",
+      "blocks": {
+        "m1": { "type": "mineral", "settings": { "symbol": "Mg", "name": "Magnesium", "atomic_number": "12", "benefit": "Supports deep green foliage and strong energy production in leaves." } },
+        "m2": { "type": "mineral", "settings": { "symbol": "Fe", "name": "Iron", "atomic_number": "26", "benefit": "Essential for chlorophyll production and oxygen transport in plants." } },
+        "m3": { "type": "mineral", "settings": { "symbol": "Zn", "name": "Zinc", "atomic_number": "30", "benefit": "Activates enzymes and regulates growth hormones for healthy development." } },
+        "m4": { "type": "mineral", "settings": { "symbol": "Cu", "name": "Copper", "atomic_number": "29", "benefit": "Supports protein synthesis and strengthens cell walls." } },
+        "m5": { "type": "mineral", "settings": { "symbol": "Mn", "name": "Manganese", "atomic_number": "25", "benefit": "Helps chelate nutrients so roots can access what already exists in the soil." } },
+        "m6": { "type": "mineral", "settings": { "symbol": "B", "name": "Boron", "atomic_number": "5", "benefit": "Critical for cell division and proper fruit and seed development." } }
+      },
+      "block_order": ["m1", "m2", "m3", "m4", "m5", "m6"],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "eyebrow": "70+ TRACE MINERALS",
+        "heading": "Inside Every Scoop Of Flora Bella",
+        "subheading": "Over 70 trace minerals in a molecular matrix designed by nature",
+        "show_analysis": true
+      }
+    },
+    "social_proof": {
+      "type": "social-proof",
+      "blocks": {
+        "rv1": {
+          "type": "review",
+          "settings": {
+            "quote": "I have been on farms and in gardens for 40 years. I used Flora Bella on my farm and noticed an immediate difference in the vigor of all my plants, especially the palms. I am amazed with the quality and performance of the Flora Bella product.",
+            "name": "Michael M.",
+            "location": "Larue MS",
+            "avatar_initials": "MM",
+            "rating": 5
+          }
+        },
+        "rv2": {
+          "type": "review",
+          "settings": {
+            "quote": "What surprised me most was how quickly I noticed new growth. The plants responded faster than I expected — with visible vitality early on!",
+            "name": "Shannon L.",
+            "location": "Tampa FL",
+            "avatar_initials": "SL",
+            "rating": 5
+          }
+        },
+        "rv3": {
+          "type": "review",
+          "settings": {
+            "quote": "Stuff made our plants explode! We had a pretty balanced recipe, but it helped give the plants a slower release version of the micronutrients a lot of growers struggle finding the right balance for.",
+            "name": "Jacob C.",
+            "location": "Cooperstate",
+            "avatar_initials": "JC",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": ["rv1", "rv2", "rv3"],
+      "settings": {
+        "heading": "Gardeners Are Seeing Real Change",
+        "subheading": "Real results from real growers"
+      }
+    },
+    "education_preview": {
+      "type": "education-preview",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "heading": "Learn To Treat Soil As A Living System",
+        "subheading": "Expert knowledge made accessible for gardeners at every level",
+        "background_color": "#0a0a0a",
+        "heading_color": "#ffffff",
+        "subheading_color": "#9ca3af",
+        "blog_handle": "news",
+        "cta_label": "View all articles"
+      }
+    },
+    "video_reels": {
+      "type": "video-reels",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "heading": "See Flora Bella In Action",
+        "subheading": "Real gardens. Real results.",
+        "background_color": "#0a0a0a",
+        "heading_color": "#ffffff",
+        "subheading_color": "#9ca3af"
+      }
+    },
+    "community_callout": {
+      "type": "community-callout",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "heading": "A Community For Growers Who Care About Soil Health",
+        "subheading": "Flora Bella exists to make expert level soil care simple for everyday gardeners. Join our growing community for seasonal tips, real case studies, and honest conversations about what works.",
+        "email_title": "Join the email list",
+        "email_description": "Enter your email to receive practical soil tips and early access to new batches.",
+        "email_button_label": "Get soil tips",
+        "community_title": "Join our Grower Community",
+        "community_description": "Connect with other gardeners, share your results, and get tips from Flora Bella growers around the country.",
+        "community_button_label": "View grower stories"
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "custom_hero",
+    "reassurance_strip",
+    "featured_product_hero",
+    "benefits_grid",
+    "how_it_works",
+    "mineral_composition",
+    "social_proof",
+    "education_preview",
+    "video_reels",
+    "community_callout"
   ]
 }

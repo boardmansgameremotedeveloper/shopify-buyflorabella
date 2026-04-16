@@ -1,0 +1,31 @@
+{% comment %}
+  Usage: {% render 'guaranteed-analysis', rows: rows_string, footnote: footnote, col1: col1_label, col2: col2_label, col3: col3_label %}
+  rows_string format: "Mineral, Amount, %DV|Mineral, Amount, %DV"
+{% endcomment %}
+<div class="fb-analysis">
+  <table class="fb-techdocs__table">
+    <thead>
+      <tr>
+        <th>{{ col1 | default: 'Mineral' }}</th>
+        <th>{{ col2 | default: 'Amount per serving' }}</th>
+        <th>{{ col3 | default: '% DV' }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {%- assign row_list = rows | split: '|' -%}
+      {%- for row in row_list -%}
+        {%- assign cells = row | split: ',' -%}
+        {%- if cells.size >= 2 -%}
+          <tr>
+            <td>{{ cells[0] | strip }}</td>
+            <td>{{ cells[1] | strip }}</td>
+            <td>{{ cells[2] | strip | default: '—' }}</td>
+          </tr>
+        {%- endif -%}
+      {%- endfor -%}
+    </tbody>
+  </table>
+  {%- if footnote != blank -%}
+    <p style="font-size:0.75rem;color:#9ca3af;margin-top:1rem;">{{ footnote }}</p>
+  {%- endif -%}
+</div>

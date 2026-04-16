@@ -1,0 +1,16 @@
+{
+  "sections": {
+    "main_community": {
+      "type": "main-community",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "heading": "Grower Gallery",
+        "subheading": "Real gardens from our community of Flora Bella growers",
+        "cta_label": "Join our WhatsApp Community",
+        "cta_url": ""
+      }
+    }
+  },
+  "order": ["main_community"]
+}

@@ -1,0 +1,156 @@
+<section class="fb-minerals fb-gradient-offwhite">
+  <div class="fb-container" style="position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:4rem;">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="fb-badge" style="margin-bottom:1rem;">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 class="fb-section-title fb-heading" style="color:#111;margin-bottom:1rem;">{{ section.settings.heading }}</h2>
+      <p class="fb-section-subtitle" style="color:#4b5563;">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="fb-minerals__grid" style="margin-bottom:4rem;">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'mineral' -%}
+          <div class="fb-mineral-card" {{ block.shopify_attributes }} title="{{ block.settings.benefit }}">
+            <div class="fb-mineral-card__number">{{ block.settings.atomic_number }}</div>
+            <div class="fb-mineral-card__symbol fb-heading">{{ block.settings.symbol }}</div>
+            <div class="fb-mineral-card__name">{{ block.settings.name }}</div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Guaranteed analysis table {%- endcomment -%}
+    {%- if section.settings.show_analysis -%}
+      <div style="background:#fff;border:1px solid rgba(124,179,66,0.2);border-radius:1.25rem;overflow:hidden;max-width:52rem;margin:0 auto;">
+        <div style="background:rgba(124,179,66,0.08);padding:1.25rem 1.5rem;border-bottom:1px solid rgba(124,179,66,0.2);">
+          <h3 style="margin:0;font-size:1.125rem;font-weight:800;color:#111;font-family:var(--font-heading-family);">Guaranteed Analysis</h3>
+        </div>
+        <div style="padding:1.5rem;overflow-x:auto;">
+          <table class="fb-techdocs__table" style="width:100%;">
+            <thead>
+              <tr>
+                <th>Mineral</th>
+                <th>Amount</th>
+                <th>% Daily Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for block in section.blocks -%}
+                {%- if block.type == 'analysis_row' -%}
+                  <tr {{ block.shopify_attributes }}>
+                    <td>{{ block.settings.mineral }}</td>
+                    <td>{{ block.settings.amount }}</td>
+                    <td>{{ block.settings.daily_value }}</td>
+                  </tr>
+                {%- endif -%}
+              {%- endfor -%}
+            </tbody>
+          </table>
+          <p style="font-size:0.75rem;color:#9ca3af;margin-top:1rem;">* Percent daily values are based on a 2,000 calorie diet.</p>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Mineral Composition",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "70+ TRACE MINERALS"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Inside Every Scoop Of Flora Bella"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Over 70 trace minerals in a molecular matrix designed by nature"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_analysis",
+      "label": "Show Guaranteed Analysis table",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mineral",
+      "name": "Mineral element",
+      "settings": [
+        {
+          "type": "text",
+          "id": "symbol",
+          "label": "Chemical symbol",
+          "default": "Mg"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Element name",
+          "default": "Magnesium"
+        },
+        {
+          "type": "text",
+          "id": "atomic_number",
+          "label": "Atomic number",
+          "default": "12"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit",
+          "label": "Benefit (tooltip)",
+          "default": "Supports deep green foliage and strong energy production in leaves."
+        }
+      ]
+    },
+    {
+      "type": "analysis_row",
+      "name": "Analysis table row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "mineral",
+          "label": "Mineral name",
+          "default": "Magnesium (as Mg)"
+        },
+        {
+          "type": "text",
+          "id": "amount",
+          "label": "Amount",
+          "default": "50 mg"
+        },
+        {
+          "type": "text",
+          "id": "daily_value",
+          "label": "% Daily Value",
+          "default": "12%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Mineral Composition",
+      "blocks": [
+        { "type": "mineral", "settings": { "symbol": "Mg", "name": "Magnesium", "atomic_number": "12", "benefit": "Supports deep green foliage and strong energy production in leaves." } },
+        { "type": "mineral", "settings": { "symbol": "Fe", "name": "Iron", "atomic_number": "26", "benefit": "Essential for chlorophyll production and oxygen transport in plants." } },
+        { "type": "mineral", "settings": { "symbol": "Zn", "name": "Zinc", "atomic_number": "30", "benefit": "Activates enzymes and regulates growth hormones for healthy development." } },
+        { "type": "mineral", "settings": { "symbol": "Cu", "name": "Copper", "atomic_number": "29", "benefit": "Supports protein synthesis and strengthens cell walls." } },
+        { "type": "mineral", "settings": { "symbol": "Mn", "name": "Manganese", "atomic_number": "25", "benefit": "Helps chelate nutrients so roots can access what already exists in the soil." } },
+        { "type": "mineral", "settings": { "symbol": "B", "name": "Boron", "atomic_number": "5", "benefit": "Critical for cell division and proper fruit and seed development." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

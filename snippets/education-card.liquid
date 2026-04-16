@@ -1,0 +1,39 @@
+{% comment %}
+  Usage: {% render 'education-card', article: article %}
+  OR:    {% render 'education-card', image: block.settings.image, meta: block.settings.meta, title: block.settings.title, description: block.settings.description, article_url: block.settings.article_url %}
+{% endcomment %}
+{%- if article -%}
+  {%- assign card_url = article.url -%}
+  {%- assign card_title = article.title -%}
+  {%- assign card_desc = article.excerpt_or_content | strip_html | truncate: 120 -%}
+  {%- assign card_meta = article.published_at | date: '%b %d, %Y' -%}
+  {%- assign card_image = article.image -%}
+{%- else -%}
+  {%- assign card_url = article_url -%}
+  {%- assign card_title = title -%}
+  {%- assign card_desc = description -%}
+  {%- assign card_meta = meta -%}
+  {%- assign card_image = image -%}
+{%- endif -%}
+
+<a href="{{ card_url | default: '#' }}" class="fb-edu-card">
+  <div class="fb-edu-card__image">
+    {%- if card_image != blank -%}
+      {{ card_image | image_url: width: 600 | image_tag: loading: 'lazy', alt: card_title }}
+    {%- else -%}
+      <div class="fb-edu-card__image--placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="fb-edu-card__body">
+    {%- if card_meta != blank -%}
+      <p class="fb-edu-card__meta">{{ card_meta }}</p>
+    {%- endif -%}
+    <h3 class="fb-edu-card__title">{{ card_title }}</h3>
+    {%- if card_desc != blank -%}
+      <p class="fb-edu-card__desc">{{ card_desc }}</p>
+    {%- endif -%}
+    <span class="fb-edu-card__cta">Read article &rarr;</span>
+  </div>
+</a>

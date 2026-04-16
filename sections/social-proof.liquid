@@ -1,0 +1,129 @@
+<section class="fb-reviews">
+  <div class="fb-container" style="position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:4rem;">
+      <h2 class="fb-section-title fb-heading" style="color:#fff;margin-bottom:1rem;">{{ section.settings.heading }}</h2>
+      <p style="color:rgba(255,255,255,0.55);font-size:1.125rem;">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div class="fb-reviews__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'review' -%}
+          <div class="fb-review-card fb-floating-slow" style="animation-delay:{{ forloop.index | times: 0.3 }}s;" {{ block.shopify_attributes }}>
+            <div style="display:flex;gap:0.375rem;margin-bottom:1rem;">
+              {%- for i in (1..block.settings.rating) -%}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="#7cb342" stroke="#7cb342" stroke-width="1"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {%- endfor -%}
+            </div>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="rgba(124,179,66,0.3)" style="margin-bottom:0.75rem;display:block;"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9375rem;line-height:1.75;margin-bottom:1.5rem;font-style:italic;">"{{ block.settings.quote }}"</p>
+            <div style="display:flex;align-items:center;gap:0.875rem;border-top:1px solid rgba(255,255,255,0.08);padding-top:1rem;">
+              <div class="fb-review-card__avatar">{{ block.settings.avatar_initials }}</div>
+              <div>
+                <p style="color:#fff;font-weight:700;font-size:0.9rem;margin:0;">{{ block.settings.name }}</p>
+                <p style="color:rgba(255,255,255,0.45);font-size:0.8125rem;margin:0;">{{ block.settings.location }}</p>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Social Proof",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Gardeners Are Seeing Real Change"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Real results from real growers"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star rating",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Review text",
+          "default": "I have been on farms and in gardens for 40 years. I used Flora Bella on my farm and noticed an immediate difference in the vigor of all my plants."
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Reviewer name",
+          "default": "Michael M."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Larue MS"
+        },
+        {
+          "type": "text",
+          "id": "avatar_initials",
+          "label": "Avatar initials",
+          "default": "MM"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social Proof",
+      "blocks": [
+        {
+          "type": "review",
+          "settings": {
+            "quote": "I have been on farms and in gardens for 40 years. I used Flora Bella on my farm and noticed an immediate difference in the vigor of all my plants, especially the palms. I am amazed with the quality and performance of the Flora Bella product.",
+            "name": "Michael M.",
+            "location": "Larue MS",
+            "avatar_initials": "MM",
+            "rating": 5
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "What surprised me most was how quickly I noticed new growth. The plants responded faster than I expected — with visible vitality early on!",
+            "name": "Shannon L.",
+            "location": "Tampa FL",
+            "avatar_initials": "SL",
+            "rating": 5
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "quote": "Stuff made our plants explode! We had a pretty balanced recipe, but it helped give the plants a slower release version of the micronutrients a lot of growers struggle finding the right balance for.",
+            "name": "Jacob C.",
+            "location": "Cooperstate",
+            "avatar_initials": "JC",
+            "rating": 5
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

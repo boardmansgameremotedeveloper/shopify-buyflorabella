@@ -1,0 +1,174 @@
+<section class="fb-about">
+  <div class="fb-container" style="position:relative;z-index:1;">
+
+    <div style="text-align:center;margin-bottom:4rem;">
+      <div class="fb-badge" style="margin-bottom:1rem;">ABOUT US</div>
+      <h1 class="fb-section-title fb-heading" style="color:#111;margin-bottom:1rem;">{{ section.settings.heading | default: 'Our Story' }}</h1>
+      <p class="fb-section-subtitle" style="color:#374151;">{{ section.settings.intro_text }}</p>
+    </div>
+
+    <div class="fb-about__mission-grid">
+      <div class="fb-about__mission-image">
+        {%- if section.settings.mission_image != blank -%}
+          {{ section.settings.mission_image | image_url: width: 900 | image_tag: loading: 'lazy', alt: 'Flora Bella Mission' }}
+        {%- else -%}
+          <div style="width:100%;height:31.25rem;background:rgba(124,179,66,0.1);display:flex;align-items:center;justify-content:center;">
+            <span style="font-size:4rem;">🌿</span>
+          </div>
+        {%- endif -%}
+      </div>
+      <div>
+        <h2 style="font-size:2rem;font-weight:800;color:#111;margin:0 0 1.25rem;font-family:var(--font-heading-family);">{{ section.settings.mission_heading | default: 'Our Mission' }}</h2>
+        <div style="color:#374151;font-size:1.0625rem;line-height:1.8;">
+          {{ section.settings.mission_body | newline_to_br }}
+        </div>
+      </div>
+    </div>
+
+    <div class="fb-about__stats">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stat' -%}
+          <div class="fb-about__stat-card" {{ block.shopify_attributes }}>
+            <div style="width:3.5rem;height:3.5rem;background:rgba(124,179,66,0.15);border-radius:1rem;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;">
+              {%- case block.settings.icon -%}
+                {%- when 'leaf' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                {%- when 'award' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+                {%- when 'users' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                {%- when 'shield' -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                {%- else -%}
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              {%- endcase -%}
+            </div>
+            <h3 style="font-size:1.125rem;font-weight:800;color:#111;margin:0 0 0.75rem;font-family:var(--font-heading-family);">{{ block.settings.title }}</h3>
+            <p style="color:#6b7280;font-size:0.9rem;line-height:1.6;margin:0;">{{ block.settings.description }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.values_heading != blank -%}
+      <div style="text-align:center;margin-bottom:3rem;">
+        <h2 style="font-size:2rem;font-weight:800;color:#111;font-family:var(--font-heading-family);">{{ section.settings.values_heading }}</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.5rem;">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'value' -%}
+            <div style="background:#fff;border:1px solid #e5e7eb;border-radius:1rem;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,0.06);" {{ block.shopify_attributes }}>
+              <h4 style="font-size:1rem;font-weight:700;color:#111;margin:0 0 0.5rem;">{{ block.settings.title }}</h4>
+              <p style="color:#6b7280;font-size:0.875rem;line-height:1.6;margin:0;">{{ block.settings.description }}</p>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "About Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Our Story"
+    },
+    {
+      "type": "textarea",
+      "id": "intro_text",
+      "label": "Intro text",
+      "default": "Founded on the belief that optimal health begins with proper mineral nutrition, Flora Bella is committed to providing the highest quality trace minerals to support your soil's daily nutritional uptake."
+    },
+    {
+      "type": "image_picker",
+      "id": "mission_image",
+      "label": "Mission image"
+    },
+    {
+      "type": "text",
+      "id": "mission_heading",
+      "label": "Mission section heading",
+      "default": "Our Mission"
+    },
+    {
+      "type": "textarea",
+      "id": "mission_body",
+      "label": "Mission body text",
+      "default": "At Flora Bella, we believe that everyone deserves access to pure, bioavailable minerals that support healthy soil and resilient plants.\n\nSourced from ancient plant and animal deposits formed deep within the Earth over hundreds of thousands of years, each bag of Flora Bella delivers a naturally balanced spectrum of trace minerals.\n\nThrough rigorous testing and transparent sourcing, we give growers the knowledge and confidence to understand, supplement, and maintain soil mineral content where it matters most — at the root level."
+    },
+    {
+      "type": "text",
+      "id": "values_heading",
+      "label": "Values section heading",
+      "default": "What We Stand For"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "leaf", "label": "Leaf" },
+            { "value": "award", "label": "Award" },
+            { "value": "users", "label": "Users" },
+            { "value": "shield", "label": "Shield" }
+          ],
+          "default": "leaf"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Pure Sourcing"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Minerals sourced from pristine ancient sea beds and volcanic deposits."
+        }
+      ]
+    },
+    {
+      "type": "value",
+      "name": "Value card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Value title",
+          "default": "Transparency"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Value description",
+          "default": "We share every ingredient, sourcing detail, and test result openly."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Page",
+      "blocks": [
+        { "type": "stat", "settings": { "icon": "leaf", "title": "Pure Sourcing", "description": "Minerals sourced from pristine ancient sea beds and volcanic deposits, free from modern pollutants." } },
+        { "type": "stat", "settings": { "icon": "award", "title": "25+ Years Trusted", "description": "Backed by decades of use in commercial agriculture before coming to home gardens." } },
+        { "type": "stat", "settings": { "icon": "users", "title": "Grower Community", "description": "A growing network of home gardeners and small farm operators seeing real results." } },
+        { "type": "stat", "settings": { "icon": "shield", "title": "Lab Verified", "description": "Every batch tested for quality, consistency, and mineral completeness." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

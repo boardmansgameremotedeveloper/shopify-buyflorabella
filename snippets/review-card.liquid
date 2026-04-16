@@ -1,0 +1,22 @@
+{% comment %}
+  Usage: {% render 'review-card', quote: block.settings.quote, name: block.settings.name, location: block.settings.location, avatar_initials: block.settings.avatar_initials, rating: block.settings.rating %}
+{% endcomment %}
+<div class="fb-review-card">
+  <div class="fb-review-card__stars">
+    {%- assign stars = rating | default: 5 | times: 1 -%}
+    {%- for i in (1..5) -%}
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="{% if i <= stars %}#f59e0b{% else %}none{% endif %}" stroke="#f59e0b" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    {%- endfor -%}
+  </div>
+  <svg class="fb-review-card__quote-icon" width="32" height="32" viewBox="0 0 24 24" fill="rgba(124,179,66,0.15)" stroke="none"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V20c0 1 0 1 1 1z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
+  <p class="fb-review-card__quote">{{ quote }}</p>
+  <div class="fb-review-card__footer">
+    <div class="fb-review-card__avatar">{{ avatar_initials | upcase }}</div>
+    <div>
+      <p class="fb-review-card__name">{{ name }}</p>
+      {%- if location != blank -%}
+        <p class="fb-review-card__location">{{ location }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,180 @@
+<section class="fb-hero fb-gradient-offwhite" id="fb-hero-{{ section.id }}">
+  <div class="fb-hero__bg-blob" style="width:16rem;height:16rem;background:#7cb342;top:5rem;left:2.5rem;"></div>
+  <div class="fb-hero__bg-blob" style="width:24rem;height:24rem;background:#8b6f47;bottom:5rem;right:2.5rem;"></div>
+
+  <div class="fb-container" style="position:relative;z-index:1;">
+    <div class="fb-hero__grid">
+
+      <div>
+        {%- if section.settings.show_buy_badge -%}
+          <div class="fb-hero__eyebrow">
+            <a href="{{ section.settings.button_primary_url | default: '/collections/all' }}" class="fb-btn-primary" style="font-size:0.875rem;padding:0.625rem 1.5rem;">
+              {{ section.settings.buy_badge_label | default: 'BUY NOW' }}
+            </a>
+          </div>
+        {%- endif -%}
+
+        <h1 class="fb-hero__headline fb-heading">
+          {{ section.settings.headline | newline_to_br }}
+        </h1>
+
+        <p class="fb-hero__subheadline">{{ section.settings.subheadline }}</p>
+
+        {%- if section.settings.hero_image != blank -%}
+          <div class="fb-hero__image-wrap" style="display:block;margin-bottom:1.5rem;" class="large-hide">
+            {{ section.settings.hero_image | image_url: width: 800 | image_tag: loading: 'eager', alt: section.settings.headline, style: 'width:100%;border-radius:1.25rem;box-shadow:0 30px 80px rgba(0,0,0,0.15);' }}
+          </div>
+        {%- endif -%}
+
+        <p class="fb-hero__body">{{ section.settings.body_text }}</p>
+
+        {%- if section.settings.trust_box_text != blank -%}
+          <div class="fb-hero__trust-box">
+            <p><strong style="color:#111;">{{ section.settings.trust_box_heading }}</strong> {{ section.settings.trust_box_text }}</p>
+          </div>
+        {%- endif -%}
+
+        <div class="fb-hero__cta-row">
+          {%- if section.settings.button_primary_label != blank -%}
+            <a href="{{ section.settings.button_primary_url | default: '/collections/all' }}" class="fb-btn-primary">
+              {{ section.settings.button_primary_label }}
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_secondary_label != blank -%}
+            <a href="{{ section.settings.button_secondary_url | default: '/community' }}" class="fb-btn-secondary">
+              {{ section.settings.button_secondary_label }}
+            </a>
+          {%- endif -%}
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="fb-checklist">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'trust_item' -%}
+                <li {{ block.shopify_attributes }}>{{ block.settings.text }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.hero_image != blank -%}
+        <div class="fb-hero__image-wrap fb-parallax-float" style="display:none;" id="fb-hero-img-desktop">
+          <div style="position:relative;">
+            <div style="position:absolute;inset:-1rem;background:linear-gradient(135deg,rgba(124,179,66,0.2),rgba(139,111,71,0.2));border-radius:2rem;filter:blur(2rem);"></div>
+            {{ section.settings.hero_image | image_url: width: 900 | image_tag: loading: 'eager', alt: section.settings.headline, style: 'position:relative;width:100%;border-radius:1.25rem;box-shadow:0 30px 80px rgba(0,0,0,0.15);transition:transform 0.7s ease;' }}
+          </div>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 1024px) {
+    #fb-hero-img-desktop { display: block !important; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Hero — Brand",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Wake Up\nYour Soil"
+    },
+    {
+      "type": "text",
+      "id": "subheadline",
+      "label": "Sub-headline",
+      "default": "Bio trace minerals that make every drop of fertilizer work harder."
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Flora Bella delivers commercial-grade trace minerals to home gardens. Strengthen soil health, support resilient plants, and bring deeper color and vitality to every bed, pot, and vegetable garden."
+    },
+    {
+      "type": "text",
+      "id": "trust_box_heading",
+      "label": "Trust box heading",
+      "default": "Trusted for Over 25 Years."
+    },
+    {
+      "type": "textarea",
+      "id": "trust_box_text",
+      "label": "Trust box text",
+      "default": "Flora Bella works with naturally occurring mineral complexes that have supported commercial agriculture for decades. Now available delivered directly to your door."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "button_primary_label",
+      "label": "Primary button label",
+      "default": "Shop Bio Trace Mix"
+    },
+    {
+      "type": "url",
+      "id": "button_primary_url",
+      "label": "Primary button URL"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_label",
+      "label": "Secondary button label",
+      "default": "See Real Grower Results"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_url",
+      "label": "Secondary button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_buy_badge",
+      "label": "Show top BUY NOW badge",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "buy_badge_label",
+      "label": "Buy badge label",
+      "default": "BUY NOW"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust bullet",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Over seventy trace minerals"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero — Brand",
+      "blocks": [
+        { "type": "trust_item", "settings": { "text": "Over seventy trace minerals" } },
+        { "type": "trust_item", "settings": { "text": "Loved by organic growers" } },
+        { "type": "trust_item", "settings": { "text": "From farmers to you" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

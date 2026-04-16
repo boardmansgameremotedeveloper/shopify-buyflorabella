@@ -1,0 +1,108 @@
+<section class="fb-reassurance">
+  <div class="fb-container">
+    <div class="fb-reassurance__grid">
+      {%- for block in section.blocks -%}
+        <div class="fb-reassurance__item" {{ block.shopify_attributes }}>
+          <div class="fb-reassurance__icon" style="background:{{ block.settings.icon_bg }}20;">
+            {%- case block.settings.icon -%}
+              {%- when 'truck' -%}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.icon_color }}" stroke-width="1.75"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              {%- when 'shield' -%}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.icon_color }}" stroke-width="1.75"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              {%- when 'message' -%}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.icon_color }}" stroke-width="1.75"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              {%- when 'leaf' -%}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.icon_color }}" stroke-width="1.75"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+              {%- when 'star' -%}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.icon_color }}" stroke-width="1.75"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              {%- else -%}
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="{{ block.settings.icon_color }}" stroke-width="1.75"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            {%- endcase -%}
+          </div>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Reassurance Strip",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Reassurance item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "truck", "label": "Truck / Shipping" },
+            { "value": "shield", "label": "Shield / Security" },
+            { "value": "message", "label": "Message / Support" },
+            { "value": "leaf", "label": "Leaf / Organic" },
+            { "value": "star", "label": "Star / Quality" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "color",
+          "id": "icon_color",
+          "label": "Icon color",
+          "default": "#d4ff00"
+        },
+        {
+          "type": "color",
+          "id": "icon_bg",
+          "label": "Icon background color",
+          "default": "#d4ff00"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Delivered to your doorstep with care"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reassurance Strip",
+      "blocks": [
+        {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "icon_color": "#d4ff00",
+            "icon_bg": "#d4ff00",
+            "text": "Delivered to your doorstep with care"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "shield",
+            "icon_color": "#ff0080",
+            "icon_bg": "#ff0080",
+            "text": "Secure checkout with major cards and PayPal"
+          }
+        },
+        {
+          "type": "item",
+          "settings": {
+            "icon": "message",
+            "icon_color": "#90ffd9",
+            "icon_bg": "#90ffd9",
+            "text": "Support from real growers, not bots"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,95 @@
+<section class="fb-benefits">
+  <div class="fb-container" style="position:relative;z-index:1;">
+    <div style="text-align:center;margin-bottom:4rem;">
+      {%- if section.settings.eyebrow != blank -%}
+        <div class="fb-badge" style="margin-bottom:1rem;">{{ section.settings.eyebrow }}</div>
+      {%- endif -%}
+      <h2 class="fb-section-title fb-heading" style="color:#fff;margin-bottom:1rem;">{{ section.settings.heading }}</h2>
+      {%- if section.settings.subheading != blank -%}
+        <p class="fb-section-subtitle" style="color:rgba(255,255,255,0.6);">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <div class="fb-benefits__grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'benefit' -%}
+          <div class="fb-benefit-card" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <div style="overflow:hidden;height:12rem;">
+                {{ block.settings.image | image_url: width: 600 | image_tag: loading: 'lazy', alt: block.settings.title, class: 'fb-benefit-card__image' }}
+              </div>
+            {%- endif -%}
+            <div class="fb-benefit-card__body">
+              <h3 class="fb-benefit-card__title">{{ block.settings.title }}</h3>
+              <p class="fb-benefit-card__desc">{{ block.settings.description }}</p>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "WHY GROWERS CHOOSE FLORA BELLA"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built Different.\nWorks Different."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Six reasons growers trust Flora Bella season after season"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Benefit card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Compost-Friendly Trace Minerals"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Designed to work alongside compost and living soil systems — helping unlock what your soil is already capable of."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Grid",
+      "blocks": [
+        { "type": "benefit", "settings": { "title": "Compost-Friendly Trace Minerals", "description": "Designed to work alongside compost and living soil systems — helping unlock what your soil is already capable of." } },
+        { "type": "benefit", "settings": { "title": "Ancient + Mineral-Dense", "description": "Made from mineral deposits formed over thousands of years — carrying complexity you can't replicate in a lab." } },
+        { "type": "benefit", "settings": { "title": "Born in the USA", "description": "Sourced and crafted in the United States, composted for 6–8 months to reawaken naturally occurring microbes and biology." } },
+        { "type": "benefit", "settings": { "title": "Iron-Ore Derived Blend", "description": "Encapsulated in an iron core, preserving the natural biology in the Bucatunna clay." } },
+        { "type": "benefit", "settings": { "title": "Biology Included", "description": "Designed to support beneficial microbes and nutrient cycling — the living foundation behind healthy, resilient soil." } },
+        { "type": "benefit", "settings": { "title": "Handled with Care + Lab Verified", "description": "Gently processed and packaged with care, with quality checks to support consistency and peace of mind." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

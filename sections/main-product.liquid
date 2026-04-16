@@ -738,6 +738,111 @@
   </div>
 </product-info>
 
+{%- assign fb_tab_blocks = section.blocks | where: 'type', 'fb_tab' -%}
+{%- if fb_tab_blocks.size > 0 -%}
+<div class="fb-product-tabs page-width" id="fb-product-tabs-{{ section.id }}">
+  <div class="fb-product-tabs__nav" role="tablist">
+    {%- for block in fb_tab_blocks -%}
+      <button
+        class="fb-product-tabs__tab{% if forloop.first %} fb-product-tabs__tab--active{% endif %}"
+        role="tab"
+        aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+        aria-controls="fb-tab-panel-{{ section.id }}-{{ forloop.index }}"
+        data-fb-tab="{{ forloop.index }}"
+        {{ block.shopify_attributes }}
+      >{{ block.settings.tab_label | default: 'Tab' }}</button>
+    {%- endfor -%}
+  </div>
+
+  {%- for block in fb_tab_blocks -%}
+    <div
+      class="fb-product-tabs__panel{% if forloop.first %} fb-product-tabs__panel--active{% endif %}"
+      id="fb-tab-panel-{{ section.id }}-{{ forloop.index }}"
+      role="tabpanel"
+      aria-hidden="{% if forloop.first %}false{% else %}true{% endif %}"
+      {{ block.shopify_attributes }}
+    >
+      {%- if block.settings.tab_content != blank -%}
+        <div class="fb-product-tabs__body rte">{{ block.settings.tab_content | newline_to_br }}</div>
+      {%- endif -%}
+
+      {%- if block.settings.show_reviews and block.settings.tab_label contains 'Review' -%}
+        <div class="fb-product-tabs__reviews">
+          {%- if product.metafields.reviews.rating.value != blank -%}
+            <p style="font-size:1rem;font-weight:700;color:#111;margin-bottom:1.5rem;">
+              Average rating: {{ product.metafields.reviews.rating.value.rating | round: 1 }} / {{ product.metafields.reviews.rating.value.scale_max }}
+              ({{ product.metafields.reviews.rating_count }} reviews)
+            </p>
+          {%- endif -%}
+          <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+        </div>
+      {%- endif -%}
+
+      {%- if block.settings.show_discount_box -%}
+        {%- render 'discount-box',
+          heading: block.settings.discount_heading,
+          subtext: block.settings.discount_subtext,
+          code: block.settings.discount_code,
+          badge: block.settings.discount_badge
+        -%}
+      {%- endif -%}
+
+      {%- assign tab_faq_rows = block.settings.faq_rows | split: '||' -%}
+      {%- if tab_faq_rows.size > 0 and block.settings.faq_rows != blank -%}
+        <div class="fb-product-tabs__faqs">
+          {%- for faq_row in tab_faq_rows -%}
+            {%- assign faq_parts = faq_row | split: '::' -%}
+            {%- if faq_parts.size == 2 -%}
+              <details class="fb-product-tabs__faq-item">
+                <summary class="fb-product-tabs__faq-q">
+                  {{ faq_parts[0] | strip }}
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </summary>
+                <div class="fb-product-tabs__faq-a">{{ faq_parts[1] | strip }}</div>
+              </details>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  {%- endfor -%}
+</div>
+
+<style>
+.fb-product-tabs { padding: 3rem 0; }
+.fb-product-tabs__nav { display: flex; gap: 0.5rem; border-bottom: 2px solid #e5e7eb; margin-bottom: 2rem; flex-wrap: wrap; }
+.fb-product-tabs__tab { background: none; border: none; padding: 0.75rem 1.5rem; font-size: 0.9375rem; font-weight: 600; color: #6b7280; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+.fb-product-tabs__tab--active, .fb-product-tabs__tab:hover { color: #7cb342; border-bottom-color: #7cb342; }
+.fb-product-tabs__panel { display: none; }
+.fb-product-tabs__panel--active { display: block; }
+.fb-product-tabs__body { color: #374151; font-size: 0.9375rem; line-height: 1.75; }
+.fb-product-tabs__faq-item { border-bottom: 1px solid #e5e7eb; }
+.fb-product-tabs__faq-q { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; font-weight: 600; cursor: pointer; color: #111; list-style: none; }
+.fb-product-tabs__faq-q::-webkit-details-marker { display: none; }
+.fb-product-tabs__faq-a { padding: 0 0 1rem; color: #4b5563; font-size: 0.9rem; line-height: 1.7; }
+</style>
+
+<script>
+(function() {
+  var container = document.getElementById('fb-product-tabs-{{ section.id }}');
+  if (!container) return;
+  var tabs = container.querySelectorAll('[data-fb-tab]');
+  var panels = container.querySelectorAll('.fb-product-tabs__panel');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      var idx = this.dataset.fbTab;
+      tabs.forEach(function(t) { t.classList.remove('fb-product-tabs__tab--active'); t.setAttribute('aria-selected', 'false'); });
+      panels.forEach(function(p) { p.classList.remove('fb-product-tabs__panel--active'); p.setAttribute('aria-hidden', 'true'); });
+      this.classList.add('fb-product-tabs__tab--active');
+      this.setAttribute('aria-selected', 'true');
+      var panel = container.querySelector('#fb-tab-panel-{{ section.id }}-' + idx);
+      if (panel) { panel.classList.add('fb-product-tabs__panel--active'); panel.setAttribute('aria-hidden', 'false'); }
+    });
+  });
+})();
+</script>
+{%- endif -%}
+
 {% schema %}
 {
   "name": "t:sections.main-product.name",
@@ -2084,6 +2189,67 @@
           "default": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.default",
           "label": "t:sections.main-product.blocks.icon_with_text.settings.heading_3.label",
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
+        }
+      ]
+    },
+    {
+      "type": "fb_tab",
+      "name": "Flora Bella Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_label",
+          "label": "Tab label",
+          "default": "Overview"
+        },
+        {
+          "type": "textarea",
+          "id": "tab_content",
+          "label": "Tab content (plain text or basic HTML)"
+        },
+        {
+          "type": "header",
+          "content": "FAQ rows (optional)"
+        },
+        {
+          "type": "textarea",
+          "id": "faq_rows",
+          "label": "FAQ rows (format: Question :: Answer — separate rows with ||)",
+          "info": "Example: What is it? :: It's a trace mineral blend. || How do I use it? :: Mix in water."
+        },
+        {
+          "type": "header",
+          "content": "Discount box (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_discount_box",
+          "label": "Show discount box",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "discount_badge",
+          "label": "Discount badge text",
+          "default": "LIMITED TIME"
+        },
+        {
+          "type": "text",
+          "id": "discount_heading",
+          "label": "Discount heading",
+          "default": "Save 15%"
+        },
+        {
+          "type": "text",
+          "id": "discount_subtext",
+          "label": "Discount subtext",
+          "default": "Subscribe & save on every order"
+        },
+        {
+          "type": "text",
+          "id": "discount_code",
+          "label": "Discount code",
+          "default": "FLORA15"
         }
       ]
     }

@@ -1,0 +1,129 @@
+<section class="fb-faq">
+  <div class="fb-container" style="max-width:52rem;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="fb-badge" style="margin-bottom:1rem;">FAQ</div>
+      <h1 class="fb-section-title fb-heading" style="color:#111;margin-bottom:1rem;">{{ section.settings.heading }}</h1>
+      <p style="color:#4b5563;font-size:1.0625rem;">{{ section.settings.subheading }}</p>
+    </div>
+
+    <div id="fb-faq-list-{{ section.id }}">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'faq_item' -%}
+          <div class="fb-faq__item" id="faq-item-{{ section.id }}-{{ forloop.index }}" {{ block.shopify_attributes }}>
+            <button
+              class="fb-faq__question"
+              aria-expanded="false"
+              aria-controls="faq-answer-{{ section.id }}-{{ forloop.index }}"
+              data-faq-toggle
+            >
+              {{ block.settings.question }}
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="fb-faq__answer" id="faq-answer-{{ section.id }}-{{ forloop.index }}" role="region">
+              {{ block.settings.answer | newline_to_br }}
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div style="text-align:center;margin-top:3rem;padding:2rem;background:#fff;border:1px solid #e5e7eb;border-radius:1.25rem;">
+        <p style="color:#111;font-weight:700;font-size:1.0625rem;margin:0 0 0.75rem;">{{ section.settings.cta_text }}</p>
+        {%- if section.settings.cta_label != blank -%}
+          <a href="{{ section.settings.cta_url | default: '/pages/contact' }}" class="fb-btn-primary">{{ section.settings.cta_label }}</a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+(function() {
+  var list = document.getElementById('fb-faq-list-{{ section.id }}');
+  if (!list) return;
+  list.querySelectorAll('[data-faq-toggle]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.fb-faq__item');
+      var isOpen = item.classList.contains('fb-faq__item--open');
+      list.querySelectorAll('.fb-faq__item--open').forEach(function(el) {
+        el.classList.remove('fb-faq__item--open');
+        el.querySelector('[data-faq-toggle]').setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('fb-faq__item--open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "FAQ Page",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Everything you need to know about Flora Bella Bio Trace Mix"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Bottom CTA text",
+      "default": "Still have questions?"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Bottom CTA button label",
+      "default": "Contact us"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Bottom CTA URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is Flora Bella Bio Trace Mix?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Flora Bella Bio Trace Mix is a natural soil supplement containing over 70 trace minerals sourced from ancient mineral deposits. It's designed to support soil biology, improve nutrient availability, and help plants thrive naturally."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FAQ Page",
+      "blocks": [
+        { "type": "faq_item", "settings": { "question": "What is Flora Bella Bio Trace Mix?", "answer": "Flora Bella Bio Trace Mix is a natural soil supplement containing over 70 trace minerals sourced from ancient mineral deposits. It's designed to support soil biology, improve nutrient availability, and help plants thrive naturally." } },
+        { "type": "faq_item", "settings": { "question": "How do I apply Flora Bella?", "answer": "Mix into your soil at planting time, or dissolve in water and apply as a soil drench. See our Technical Docs page for specific application rates." } },
+        { "type": "faq_item", "settings": { "question": "Is Flora Bella safe for organic growing?", "answer": "Yes. Flora Bella is derived from naturally occurring mineral deposits and is safe for use in organic growing systems. It contains no synthetic chemicals." } },
+        { "type": "faq_item", "settings": { "question": "How quickly will I see results?", "answer": "Many growers notice improved plant vigor within 2–4 weeks of first application. Soil improvements like increased microbial activity take longer and build over successive seasons." } },
+        { "type": "faq_item", "settings": { "question": "How is Flora Bella different from regular fertilizers?", "answer": "Flora Bella focuses on trace minerals and soil biology — not NPK. It works alongside your existing fertilizer program to improve how efficiently your plants use available nutrients." } }
+      ]
+    }
+  ]
+}
+{% endschema %}

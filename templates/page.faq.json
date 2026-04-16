@@ -1,0 +1,26 @@
+{
+  "sections": {
+    "main_faq": {
+      "type": "main-faq",
+      "blocks": {
+        "faq_1": { "type": "faq_item", "settings": { "question": "What is Flora Bella Bio Trace Mix?", "answer": "Flora Bella Bio Trace Mix is a natural soil supplement containing over 70 trace minerals sourced from ancient mineral deposits. It's designed to support soil biology, improve nutrient availability, and help plants thrive naturally." } },
+        "faq_2": { "type": "faq_item", "settings": { "question": "How do I apply Flora Bella?", "answer": "Mix into your soil at planting time, or dissolve in water and apply as a soil drench. See our Technical Docs page for specific application rates per plant type and container size." } },
+        "faq_3": { "type": "faq_item", "settings": { "question": "Is Flora Bella safe for organic growing?", "answer": "Yes. Flora Bella is derived from naturally occurring mineral deposits and is safe for use in organic growing systems. It contains no synthetic chemicals or artificial additives." } },
+        "faq_4": { "type": "faq_item", "settings": { "question": "How quickly will I see results?", "answer": "Many growers notice improved plant vigor within 2–4 weeks of first application. Soil improvements like increased microbial activity take longer and build over successive seasons." } },
+        "faq_5": { "type": "faq_item", "settings": { "question": "How is Flora Bella different from regular fertilizers?", "answer": "Flora Bella focuses on trace minerals and soil biology — not NPK. It works alongside your existing fertilizer program to improve how efficiently your plants use available nutrients." } },
+        "faq_6": { "type": "faq_item", "settings": { "question": "Can I use Flora Bella with other fertilizers?", "answer": "Absolutely. Flora Bella is designed to complement your existing fertilizer program. The trace minerals and humic/fulvic acids actually help improve the uptake efficiency of your primary fertilizer." } },
+        "faq_7": { "type": "faq_item", "settings": { "question": "How should I store Flora Bella?", "answer": "Store in a cool, dry location away from direct sunlight. Keep sealed when not in use. Shelf life is 24 months from manufacture date when stored correctly." } },
+        "faq_8": { "type": "faq_item", "settings": { "question": "Is Flora Bella safe for edible plants and vegetables?", "answer": "Yes. Flora Bella contains only naturally occurring minerals and is safe for use on vegetables, herbs, fruit trees, and edible gardens." } }
+      },
+      "block_order": ["faq_1", "faq_2", "faq_3", "faq_4", "faq_5", "faq_6", "faq_7", "faq_8"],
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subheading": "Everything you need to know about Flora Bella Bio Trace Mix",
+        "cta_text": "Still have questions?",
+        "cta_label": "Contact us",
+        "cta_url": "/pages/contact"
+      }
+    }
+  },
+  "order": ["main_faq"]
+}

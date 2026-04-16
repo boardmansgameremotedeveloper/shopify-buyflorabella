@@ -1,0 +1,202 @@
+<section class="fb-techdocs">
+  <div class="fb-container">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div class="fb-badge" style="margin-bottom:1rem;">TECHNICAL DOCS</div>
+      <h1 class="fb-section-title fb-heading" style="color:#111;margin-bottom:1rem;">{{ section.settings.heading }}</h1>
+      <p class="fb-section-subtitle" style="color:#4b5563;">{{ section.settings.subheading }}</p>
+    </div>
+
+    {%- for block in section.blocks -%}
+
+      {%- if block.type == 'application_guide' -%}
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:1.25rem;padding:2rem;margin-bottom:2rem;" {{ block.shopify_attributes }}>
+          <h2 style="font-size:1.5rem;font-weight:800;color:#111;margin:0 0 1.25rem;font-family:var(--font-heading-family);">{{ block.settings.title }}</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:1.25rem;">
+            {%- assign rows = block.settings.application_rates | split: '|' -%}
+            {%- for row in rows -%}
+              {%- assign parts = row | split: ':' -%}
+              {%- if parts.size == 2 -%}
+                <div style="background:rgba(124,179,66,0.05);border:1px solid rgba(124,179,66,0.15);border-radius:0.75rem;padding:1rem;">
+                  <p style="font-weight:700;color:#111;margin:0 0 0.25rem;font-size:0.9375rem;">{{ parts[0] | strip }}</p>
+                  <p style="color:#4b5563;margin:0;font-size:0.875rem;">{{ parts[1] | strip }}</p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+          {%- if block.settings.notes != blank -%}
+            <p style="color:#6b7280;font-size:0.875rem;margin:1rem 0 0;font-style:italic;">{{ block.settings.notes }}</p>
+          {%- endif -%}
+        </div>
+
+      {%- elsif block.type == 'analysis_table' -%}
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:1.25rem;overflow:hidden;margin-bottom:2rem;" {{ block.shopify_attributes }}>
+          <div style="background:rgba(124,179,66,0.08);padding:1.25rem 1.5rem;border-bottom:1px solid rgba(124,179,66,0.2);">
+            <h2 style="margin:0;font-size:1.25rem;font-weight:800;color:#111;font-family:var(--font-heading-family);">{{ block.settings.title }}</h2>
+          </div>
+          <div style="padding:1.5rem;overflow-x:auto;">
+            <table class="fb-techdocs__table">
+              <thead>
+                <tr>
+                  <th>{{ block.settings.col1_label | default: 'Mineral' }}</th>
+                  <th>{{ block.settings.col2_label | default: 'Amount per serving' }}</th>
+                  <th>{{ block.settings.col3_label | default: '% DV' }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- assign rows = block.settings.rows | split: '|' -%}
+                {%- for row in rows -%}
+                  {%- assign cells = row | split: ',' -%}
+                  {%- if cells.size >= 2 -%}
+                    <tr>
+                      <td>{{ cells[0] | strip }}</td>
+                      <td>{{ cells[1] | strip }}</td>
+                      <td>{{ cells[2] | strip | default: '—' }}</td>
+                    </tr>
+                  {%- endif -%}
+                {%- endfor -%}
+              </tbody>
+            </table>
+            {%- if block.settings.footnote != blank -%}
+              <p style="font-size:0.75rem;color:#9ca3af;margin-top:1rem;">{{ block.settings.footnote }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+
+      {%- elsif block.type == 'content_block' -%}
+        <div style="background:#fff;border:1px solid #e5e7eb;border-radius:1.25rem;padding:2rem;margin-bottom:2rem;" {{ block.shopify_attributes }}>
+          <h2 style="font-size:1.375rem;font-weight:800;color:#111;margin:0 0 1rem;font-family:var(--font-heading-family);">{{ block.settings.title }}</h2>
+          <div style="color:#374151;font-size:0.9375rem;line-height:1.75;">{{ block.settings.content | newline_to_br }}</div>
+        </div>
+
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Technical Docs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Application Guide & Technical Documentation"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Sub-heading",
+      "default": "Everything you need to apply Flora Bella correctly and confidently"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "application_guide",
+      "name": "Application guide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section title",
+          "default": "Application Rates"
+        },
+        {
+          "type": "textarea",
+          "id": "application_rates",
+          "label": "Rates (format: Label: Value, separate rows with |)",
+          "default": "Garden beds: 1–2 tsp per gallon of water|Containers & pots: ½ tsp per gallon|Lawn application: 2 tsp per gallon, diluted|Seedling trays: ¼ tsp per gallon"
+        },
+        {
+          "type": "text",
+          "id": "notes",
+          "label": "Notes / disclaimer",
+          "default": "Apply every 2–4 weeks during active growing season. Reduce to monthly during dormancy."
+        }
+      ]
+    },
+    {
+      "type": "analysis_table",
+      "name": "Analysis table",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Table title",
+          "default": "Guaranteed Analysis"
+        },
+        {
+          "type": "text",
+          "id": "col1_label",
+          "label": "Column 1 label",
+          "default": "Mineral"
+        },
+        {
+          "type": "text",
+          "id": "col2_label",
+          "label": "Column 2 label",
+          "default": "Amount per serving"
+        },
+        {
+          "type": "text",
+          "id": "col3_label",
+          "label": "Column 3 label",
+          "default": "% DV"
+        },
+        {
+          "type": "textarea",
+          "id": "rows",
+          "label": "Table rows (format: Mineral, Amount, %DV — separate rows with |)",
+          "default": "Magnesium (as Mg), 50 mg, 12%|Iron (as Fe), 18 mg, 100%|Zinc (as Zn), 11 mg, 100%|Copper (as Cu), 0.9 mg, 100%|Manganese (as Mn), 2.3 mg, 100%|Boron (as B), 1 mg, *"
+        },
+        {
+          "type": "text",
+          "id": "footnote",
+          "label": "Table footnote",
+          "default": "* Daily Value not established."
+        }
+      ]
+    },
+    {
+      "type": "content_block",
+      "name": "Content block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Block title",
+          "default": "Storage & Handling"
+        },
+        {
+          "type": "textarea",
+          "id": "content",
+          "label": "Content",
+          "default": "Store in a cool, dry location away from direct sunlight. Keep sealed when not in use. Shelf life is 24 months from manufacture date when stored correctly."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Technical Docs",
+      "blocks": [
+        {
+          "type": "application_guide",
+          "settings": {
+            "title": "Application Rates",
+            "application_rates": "Garden beds: 1–2 tsp per gallon of water|Containers & pots: ½ tsp per gallon|Lawn application: 2 tsp per gallon, diluted|Seedling trays: ¼ tsp per gallon",
+            "notes": "Apply every 2–4 weeks during active growing season."
+          }
+        },
+        {
+          "type": "analysis_table",
+          "settings": {
+            "title": "Guaranteed Analysis",
+            "rows": "Magnesium (as Mg), 50 mg, 12%|Iron (as Fe), 18 mg, 100%|Zinc (as Zn), 11 mg, 100%|Copper (as Cu), 0.9 mg, 100%|Manganese (as Mn), 2.3 mg, 100%|Boron (as B), 1 mg, *"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+{% comment %}
+  Usage: {% render 'discount-box', heading: 'Save 15%', subtext: 'Subscribe & save', code: 'FLORA15', badge: 'LIMITED TIME' %}
+{% endcomment %}
+<div class="fb-discount-box">
+  {%- if badge != blank -%}
+    <div class="fb-discount-box__badge">{{ badge }}</div>
+  {%- endif -%}
+  <div class="fb-discount-box__inner">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#7cb342" stroke-width="2" style="flex-shrink:0;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+    <div>
+      {%- if heading != blank -%}
+        <p class="fb-discount-box__heading">{{ heading }}</p>
+      {%- endif -%}
+      {%- if subtext != blank -%}
+        <p class="fb-discount-box__subtext">{{ subtext }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+  {%- if code != blank -%}
+    <div class="fb-discount-box__code-wrap">
+      <span class="fb-discount-box__code-label">Use code:</span>
+      <button class="fb-discount-box__code" data-copy-code="{{ code }}" title="Copy code">{{ code }}</button>
+    </div>
+    <script>
+    (function() {
+      var btn = document.querySelector('[data-copy-code="{{ code }}"]');
+      if (!btn) return;
+      btn.addEventListener('click', function() {
+        navigator.clipboard.writeText('{{ code }}').then(function() {
+          btn.textContent = 'Copied!';
+          setTimeout(function() { btn.textContent = '{{ code }}'; }, 2000);
+        });
+      });
+    })();
+    </script>
+  {%- endif -%}
+</div>
