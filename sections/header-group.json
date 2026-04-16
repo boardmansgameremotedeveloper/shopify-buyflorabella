@@ -26,7 +26,6 @@
       "block_order": [
         "announcement_YWkn3G"
       ],
-      "disabled": true,
       "name": "BirdLabs — Announcement Bar",
       "settings": {
         "change_slides_speed": 5
@@ -34,7 +33,6 @@
     },
     "birdlabs_header_hwje9n": {
       "type": "birdlabs-header",
-      "disabled": true,
       "name": "BirdLabs — Header",
       "settings": {
         "menu": "main-menu"
