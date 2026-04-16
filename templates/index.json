@@ -93,6 +93,61 @@
       ],
       "settings": {}
     },
+    "birdlabs_multicolumn_gaxYUh": {
+      "type": "birdlabs-multicolumn",
+      "blocks": {
+        "column_BEtDr8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Why_Growers_Choose_1_of_6_Compost_pile.jpg",
+            "icon_bg_color": "#ffffff",
+            "heading": "Feature One",
+            "description": "Describe this feature in a few words."
+          }
+        },
+        "column_ENUDU7": {
+          "type": "column",
+          "settings": {
+            "icon_bg_color": "#ffffff",
+            "heading": "Feature Two",
+            "description": "Describe this feature in a few words."
+          }
+        },
+        "column_p3GeCm": {
+          "type": "column",
+          "settings": {
+            "icon_bg_color": "#ffffff",
+            "heading": "Feature Three",
+            "description": "Describe this feature in a few words."
+          }
+        }
+      },
+      "block_order": [
+        "column_BEtDr8",
+        "column_ENUDU7",
+        "column_p3GeCm"
+      ],
+      "name": "BirdLabs — Feature Grid",
+      "settings": {
+        "heading": "Our Features",
+        "description": "Everything you need, all in one place.",
+        "heading_color": "#111111",
+        "description_color": "#4b5563",
+        "bg_color": "#ffffff",
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 0,
+        "card_bg_color": "#ffffff",
+        "card_radius": 12,
+        "image_ratio": "4 / 3",
+        "card_heading_color": "#111111",
+        "card_desc_color": "#6b7280",
+        "columns_desktop": 3,
+        "columns_mobile": "1",
+        "column_gap": 20,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "featured_product_hero": {
       "type": "featured-product-hero",
       "blocks": {
@@ -399,6 +454,7 @@
   "order": [
     "birdlabs_hero_AMiadz",
     "reassurance_strip",
+    "birdlabs_multicolumn_gaxYUh",
     "featured_product_hero",
     "benefits_grid",
     "how_it_works",
