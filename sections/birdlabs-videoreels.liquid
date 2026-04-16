@@ -1,0 +1,625 @@
+{% style %}
+  #birdlabs-vr-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(4rem);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-blob--pink {
+    top: 0;
+    left: 25%;
+    width: 24rem;
+    height: 24rem;
+    background: rgba(255, 20, 147, 0.08);
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-blob--yellow {
+    bottom: 0;
+    right: 25%;
+    width: 24rem;
+    height: 24rem;
+    background: rgba(212, 255, 0, 0.08);
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    #birdlabs-vr-{{ section.id }} .vr-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  /* ── Player ── */
+  #birdlabs-vr-{{ section.id }} .vr-player-wrap {
+    background: #000;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 1.5rem;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    max-width: 28rem;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-player-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-player-inner iframe,
+  #birdlabs-vr-{{ section.id }} .vr-player-inner video {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    object-fit: cover;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-player-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    pointer-events: none;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-player-title {
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.125rem;
+    margin: 0 0 0.25rem;
+    line-height: 1.3;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-player-platform {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    margin: 0;
+  }
+
+  /* ── Right column ── */
+  #birdlabs-vr-{{ section.id }} .vr-heading {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    color: #111;
+    margin: 0 0 1.5rem;
+    line-height: 1.15;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-description {
+    font-size: 1.125rem;
+    color: #4b5563;
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+  }
+
+  /* ── Thumbnail grid ── */
+  #birdlabs-vr-{{ section.id }} .vr-thumb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb {
+    background: #fff;
+    border: 2px solid #d1d5db;
+    border-radius: 1rem;
+    overflow: hidden;
+    aspect-ratio: 9 / 16;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    padding: 0;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb:hover {
+    transform: scale(1.03);
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb-hover {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb:hover .vr-thumb-hover {
+    opacity: 1;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb-hover svg {
+    width: 2rem;
+    height: 2rem;
+    fill: #fff;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb-label {
+    color: #fff;
+    font-size: 0.625rem;
+    font-weight: 600;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0.2rem;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb-platform {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+  }
+
+  /* ── Neon pulse on active thumb ── */
+  @keyframes vr-neon-pulse {
+    0%, 100% {
+      box-shadow: 0 0 4px #FFFF33, 0 0 6px #FFFF33, 0 0 8px #FFFF33;
+      transform: scale(1.03);
+    }
+    50% {
+      box-shadow: 0 0 8px #FFFF33, 0 0 12px #FFFF33, 0 0 16px #FFFF33;
+      transform: scale(1.05);
+    }
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-thumb--active {
+    border-color: #7c3aed;
+    animation: vr-neon-pulse 1s infinite alternate;
+  }
+
+  /* ── View more button ── */
+  #birdlabs-vr-{{ section.id }} .vr-view-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #fff;
+    border: 2px solid #7cb342;
+    padding: 1rem 2rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  #birdlabs-vr-{{ section.id }} .vr-view-more:hover {
+    background: rgba(124, 179, 66, 0.1);
+  }
+
+  /* ── Empty state ── */
+  #birdlabs-vr-{{ section.id }} .vr-empty {
+    padding: 4rem;
+    text-align: center;
+    color: #9ca3af;
+    font-size: 1rem;
+    border: 2px dashed #e5e7eb;
+    border-radius: 1rem;
+  }
+
+  /* ── No-thumbnail placeholder ── */
+  #birdlabs-vr-{{ section.id }} .vr-thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #1f2937;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+{% endstyle %}
+
+<section id="birdlabs-vr-{{ section.id }}">
+  <div class="vr-blob vr-blob--pink"></div>
+  <div class="vr-blob vr-blob--yellow"></div>
+
+  <div class="vr-container">
+    {% if section.blocks.size == 0 %}
+      <div class="vr-empty">
+        Add video blocks in the theme editor to display reels here.
+      </div>
+    {% else %}
+
+      {%- comment -%}
+        Build a JSON data array so JS can render the active player without a page reload.
+        For each block we compute: video type (youtube/shopify), video ID or Shopify sources,
+        thumbnail URL, and display title.
+      {%- endcomment -%}
+      <script id="vr-data-{{ section.id }}" type="application/json">
+        [
+          {% for block in section.blocks %}
+            {%- assign raw_url = block.settings.video_url | default: '' | strip -%}
+            {%- assign vid_id = '' -%}
+            {%- assign vid_type = 'shopify' -%}
+
+            {%- if raw_url contains 'youtube.com/watch' -%}
+              {%- assign vid_id = raw_url | split: 'v=' | last | split: '&' | first | strip -%}
+              {%- assign vid_type = 'youtube' -%}
+            {%- elsif raw_url contains 'youtu.be/' -%}
+              {%- assign vid_id = raw_url | split: 'youtu.be/' | last | split: '?' | first | strip -%}
+              {%- assign vid_type = 'youtube' -%}
+            {%- elsif raw_url contains 'youtube.com/embed/' -%}
+              {%- assign vid_id = raw_url | split: '/embed/' | last | split: '?' | first | strip -%}
+              {%- assign vid_type = 'youtube' -%}
+            {%- elsif raw_url contains 'youtube.com/shorts/' -%}
+              {%- assign vid_id = raw_url | split: '/shorts/' | last | split: '?' | first | strip -%}
+              {%- assign vid_type = 'youtube' -%}
+            {%- endif -%}
+
+            {%- if block.settings.custom_thumbnail != blank -%}
+              {%- assign thumb = block.settings.custom_thumbnail | img_url: '300x533', crop: 'center' -%}
+            {%- elsif vid_type == 'youtube' and vid_id != blank -%}
+              {%- assign thumb = 'https://img.youtube.com/vi/' | append: vid_id | append: '/hqdefault.jpg' -%}
+            {%- elsif block.settings.shopify_video != blank -%}
+              {%- assign thumb = block.settings.shopify_video.preview_image | img_url: '300x533', crop: 'center' -%}
+            {%- else -%}
+              {%- assign thumb = '' -%}
+            {%- endif -%}
+
+            {
+              "title": {{ block.settings.title | default: 'Video' | json }},
+              "type": {{ vid_type | json }},
+              "videoId": {{ vid_id | json }},
+              "thumbnail": {{ thumb | json }},
+              "sources": [
+                {% if vid_type == 'shopify' and block.settings.shopify_video != blank %}
+                  {% for src in block.settings.shopify_video.sources %}
+                    { "url": {{ src.url | json }}, "mime_type": {{ src.mime_type | json }} }{% unless forloop.last %},{% endunless %}
+                  {% endfor %}
+                {% endif %}
+              ]
+            }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      </script>
+
+      <div class="vr-grid">
+
+        {%- comment -%} Left: video player {%- endcomment -%}
+        <div>
+          <div class="vr-player-wrap">
+            <div class="vr-player-inner" id="vr-player-{{ section.id }}">
+              {%- comment -%}Populated by JS on load{%- endcomment -%}
+            </div>
+            <div class="vr-player-overlay">
+              <p class="vr-player-title" id="vr-title-{{ section.id }}">
+                {{- section.blocks.first.settings.title | default: 'Video' -}}
+              </p>
+              <p class="vr-player-platform" id="vr-platform-{{ section.id }}">YouTube</p>
+            </div>
+          </div>
+        </div>
+
+        {%- comment -%} Right: heading + thumbnails {%- endcomment -%}
+        <div>
+          {% if section.settings.heading != blank %}
+            <h2 class="vr-heading">{{ section.settings.heading }}</h2>
+          {% endif %}
+
+          {% if section.settings.description != blank %}
+            <p class="vr-description">{{ section.settings.description }}</p>
+          {% endif %}
+
+          <div class="vr-thumb-grid">
+            {% for block in section.blocks %}
+              {%- assign raw_url_t = block.settings.video_url | default: '' | strip -%}
+              {%- assign vid_id_t = '' -%}
+              {%- assign vid_type_t = 'shopify' -%}
+
+              {%- if raw_url_t contains 'youtube.com/watch' -%}
+                {%- assign vid_id_t = raw_url_t | split: 'v=' | last | split: '&' | first | strip -%}
+                {%- assign vid_type_t = 'youtube' -%}
+              {%- elsif raw_url_t contains 'youtu.be/' -%}
+                {%- assign vid_id_t = raw_url_t | split: 'youtu.be/' | last | split: '?' | first | strip -%}
+                {%- assign vid_type_t = 'youtube' -%}
+              {%- elsif raw_url_t contains 'youtube.com/embed/' -%}
+                {%- assign vid_id_t = raw_url_t | split: '/embed/' | last | split: '?' | first | strip -%}
+                {%- assign vid_type_t = 'youtube' -%}
+              {%- elsif raw_url_t contains 'youtube.com/shorts/' -%}
+                {%- assign vid_id_t = raw_url_t | split: '/shorts/' | last | split: '?' | first | strip -%}
+                {%- assign vid_type_t = 'youtube' -%}
+              {%- endif -%}
+
+              {%- if block.settings.custom_thumbnail != blank -%}
+                {%- assign thumb_t = block.settings.custom_thumbnail | img_url: '300x533', crop: 'center' -%}
+              {%- elsif vid_type_t == 'youtube' and vid_id_t != blank -%}
+                {%- assign thumb_t = 'https://img.youtube.com/vi/' | append: vid_id_t | append: '/hqdefault.jpg' -%}
+              {%- elsif block.settings.shopify_video != blank -%}
+                {%- assign thumb_t = block.settings.shopify_video.preview_image | img_url: '300x533', crop: 'center' -%}
+              {%- else -%}
+                {%- assign thumb_t = '' -%}
+              {%- endif -%}
+
+              <button
+                class="vr-thumb{% if forloop.first %} vr-thumb--active{% endif %}"
+                data-vr-index="{{ forloop.index0 }}"
+                type="button"
+              >
+                {% if thumb_t != blank %}
+                  <img src="{{ thumb_t }}" alt="{{ block.settings.title | default: 'Video' | escape }}" loading="lazy">
+                {% else %}
+                  <div class="vr-thumb-placeholder">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="#6b7280" stroke-width="1.5"/>
+                      <path d="M10 8l6 4-6 4V8z" fill="#6b7280"/>
+                    </svg>
+                  </div>
+                {% endif %}
+                <div class="vr-thumb-hover">
+                  <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                </div>
+                <div class="vr-thumb-info">
+                  <span class="vr-thumb-label">{{ block.settings.title | default: 'Video' }}</span>
+                  <span class="vr-thumb-platform">
+                    <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 00.5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 002.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.5a3.02 3.02 0 002.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>
+                    </svg>
+                    {{ vid_type_t | capitalize }}
+                  </span>
+                </div>
+              </button>
+            {% endfor %}
+          </div>
+
+          {% if section.settings.show_view_more and section.settings.view_more_url != blank %}
+            <a href="{{ section.settings.view_more_url }}" class="vr-view-more" target="_blank" rel="noopener noreferrer">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M23.5 6.19a3.02 3.02 0 00-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 00.5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 002.12 2.14C4.5 20.45 12 20.45 12 20.45s7.5 0 9.38-.5a3.02 3.02 0 002.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/>
+              </svg>
+              {{ section.settings.view_more_label | default: 'View more on YouTube' }}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          {% endif %}
+        </div>
+
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+(function () {
+  var sid = '{{ section.id }}';
+  var dataEl = document.getElementById('vr-data-' + sid);
+  if (!dataEl) return;
+
+  var videos;
+  try { videos = JSON.parse(dataEl.textContent); } catch (e) { return; }
+  if (!videos || !videos.length) return;
+
+  var playerEl = document.getElementById('vr-player-' + sid);
+  var titleEl  = document.getElementById('vr-title-' + sid);
+  var platEl   = document.getElementById('vr-platform-' + sid);
+  var thumbs   = document.querySelectorAll('#birdlabs-vr-' + sid + ' .vr-thumb');
+
+  function renderPlayer(v) {
+    if (!playerEl) return;
+    if (v.type === 'youtube' && v.videoId) {
+      playerEl.innerHTML =
+        '<iframe src="https://www.youtube.com/embed/' + v.videoId +
+        '?autoplay=1&rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    } else if (v.sources && v.sources.length) {
+      var srcs = v.sources.map(function (s) {
+        return '<source src="' + s.url + '" type="' + s.mime_type + '">';
+      }).join('');
+      playerEl.innerHTML =
+        '<video controls playsinline autoplay muted>' + srcs + '</video>';
+    } else {
+      playerEl.innerHTML =
+        '<div style="display:flex;align-items:center;justify-content:center;width:100%;height:100%;background:#1f2937;color:#9ca3af;font-size:.875rem;padding:1rem;text-align:center;">No video source configured.</div>';
+    }
+  }
+
+  function setActive(idx) {
+    var v = videos[idx];
+    if (!v) return;
+    thumbs.forEach(function (btn, i) {
+      btn.classList.toggle('vr-thumb--active', i === idx);
+    });
+    if (titleEl) titleEl.textContent = v.title || '';
+    if (platEl)  platEl.textContent  = v.type === 'youtube' ? 'YouTube' : 'Video';
+    renderPlayer(v);
+  }
+
+  thumbs.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      setActive(parseInt(btn.getAttribute('data-vr-index'), 10));
+    });
+  });
+
+  setActive(0);
+}());
+</script>
+
+{% schema %}
+{
+  "name": "BirdLabs — Video Reels",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "See Flora Bella In Action"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Watch exactly how we mix and apply Flora Bella in real gardens. Select a video below to switch views."
+    },
+    {
+      "type": "header",
+      "content": "View More Button"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_more",
+      "label": "Show button",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_more_label",
+      "label": "Button label",
+      "default": "View more on YouTube"
+    },
+    {
+      "type": "url",
+      "id": "view_more_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f9fafb"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_reel",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Video title",
+          "default": "Video title"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "label": "YouTube URL",
+          "accept": ["youtube"],
+          "info": "Paste a YouTube URL (watch, youtu.be, embed, or Shorts). Leave blank to use a Shopify-hosted video below."
+        },
+        {
+          "type": "video",
+          "id": "shopify_video",
+          "label": "Shopify-hosted video",
+          "info": "Used only when no YouTube URL is set above."
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_thumbnail",
+          "label": "Custom thumbnail",
+          "info": "Optional. Overrides the auto-generated YouTube thumbnail or Shopify preview."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BirdLabs — Video Reels",
+      "blocks": [
+        {
+          "type": "video_reel",
+          "settings": {
+            "title": "How To Mix Flora Bella",
+            "video_url": "https://www.youtube.com/watch?v=-SFmEtrPzd0"
+          }
+        },
+        {
+          "type": "video_reel",
+          "settings": {
+            "title": "Compost Tea Mix",
+            "video_url": "https://www.youtube.com/watch?v=3L2qpacas2s"
+          }
+        },
+        {
+          "type": "video_reel",
+          "settings": {
+            "title": "Flora Bella Trace Minerals",
+            "video_url": "https://www.youtube.com/watch?v=ZjHmtGw0ZqA"
+          }
+        },
+        {
+          "type": "video_reel",
+          "settings": {
+            "title": "Flora Bella Waterfall Scene",
+            "video_url": "https://www.youtube.com/watch?v=MdAHWVib7Kk"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

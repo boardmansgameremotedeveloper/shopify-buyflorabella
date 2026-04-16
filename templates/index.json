@@ -602,6 +602,56 @@
         "muted": false
       }
     },
+    "birdlabs_videoreels_main": {
+      "type": "birdlabs-videoreels",
+      "blocks": {
+        "vr_block_1": {
+          "type": "video_reel",
+          "settings": {
+            "title": "How To Mix Flora Bella",
+            "video_url": "https://www.youtube.com/watch?v=-SFmEtrPzd0"
+          }
+        },
+        "vr_block_2": {
+          "type": "video_reel",
+          "settings": {
+            "title": "Compost Tea Mix",
+            "video_url": "https://www.youtube.com/watch?v=3L2qpacas2s"
+          }
+        },
+        "vr_block_3": {
+          "type": "video_reel",
+          "settings": {
+            "title": "Flora Bella Trace Minerals",
+            "video_url": "https://www.youtube.com/watch?v=ZjHmtGw0ZqA"
+          }
+        },
+        "vr_block_4": {
+          "type": "video_reel",
+          "settings": {
+            "title": "Flora Bella Waterfall Scene",
+            "video_url": "https://www.youtube.com/watch?v=MdAHWVib7Kk"
+          }
+        }
+      },
+      "block_order": [
+        "vr_block_1",
+        "vr_block_2",
+        "vr_block_3",
+        "vr_block_4"
+      ],
+      "name": "BirdLabs — Video Reels",
+      "settings": {
+        "heading": "See Flora Bella In Action",
+        "description": "Watch exactly how we mix and apply Flora Bella in real gardens. Select a video below to switch views.",
+        "show_view_more": true,
+        "view_more_label": "View more on YouTube",
+        "view_more_url": "https://www.youtube.com/@buyflorabella",
+        "bg_color": "#f9fafb",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "community_callout": {
       "type": "community-callout",
       "settings": {
@@ -687,6 +737,7 @@
     "social_proof",
     "education_preview",
     "video_reels",
+    "birdlabs_videoreels_main",
     "community_callout"
   ]
 }

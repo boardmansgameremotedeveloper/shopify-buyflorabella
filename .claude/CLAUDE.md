@@ -201,9 +201,11 @@ Documents live in:
 
 iteration-N-human.md
 ↓
-iteration-N-claude-questions.md (optional)
+(if unclear) iteration-N-claude-questions.md  ← Claude writes questions here
 ↓
-iteration-N-claude-to-execute.md
+Human answers in the SAME file, then tells Claude to re-read
+↓
+iteration-N-claude-to-execute.md (optional pre-execution summary)
 ↓
 "go"
 ↓
@@ -211,6 +213,19 @@ iteration-N-claude-to-execute.md
 ↓
 iteration-N-outcome.md  ← REQUIRED after every iteration
 
+
+### Questions Before Execution (Optional but Required When Unclear)
+
+If requirements are ambiguous, architecturally risky, or involve choices the human must make:
+
+1. Claude writes questions to `iteration-N-claude-questions.md` **before writing any code**
+2. Human answers directly in that file (below each question, or at the end)
+3. Human signals Claude to re-read (e.g. "go", "re-read questions", or pastes answers in chat)
+4. Claude re-reads the file, then proceeds with execution
+
+**When to ask vs. proceed:**
+- Ask when: approach has multiple valid paths with real tradeoffs, external credentials/keys are needed, or a wrong assumption would require significant rework
+- Proceed when: requirements are clear, the recommended approach is obvious, or the question is minor enough to document in the outcome instead
 
 ### Outcome Document (Required)
 
