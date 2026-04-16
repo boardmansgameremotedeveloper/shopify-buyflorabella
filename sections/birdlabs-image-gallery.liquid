@@ -1,0 +1,270 @@
+{% style %}
+  #birdlabs-ig-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-heading {
+    text-align: center;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 2rem;
+    line-height: 1.2;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    gap: {{ section.settings.gap }}px;
+  }
+
+  @media (min-width: 768px) {
+    #birdlabs-ig-{{ section.id }} .ig-grid {
+      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    }
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-item {
+    display: block;
+    overflow: hidden;
+    border-radius: {{ section.settings.image_radius }}px;
+    aspect-ratio: {{ section.settings.image_ratio }};
+    position: relative;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-item--static {
+    cursor: default;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #e5e7eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 0.8rem;
+  }
+
+  #birdlabs-ig-{{ section.id }} .ig-empty {
+    text-align: center;
+    color: #9ca3af;
+    padding: 3rem 0;
+    font-size: 0.9rem;
+  }
+{% endstyle %}
+
+<section id="birdlabs-ig-{{ section.id }}">
+  <div class="ig-container">
+
+    {% if section.settings.heading != blank %}
+      <h2 class="ig-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="ig-grid">
+        {% for block in section.blocks %}
+
+          {% if block.settings.link != blank %}
+            <a href="{{ block.settings.link }}" class="ig-item" {{ block.shopify_attributes }}>
+          {% else %}
+            <div class="ig-item ig-item--static" {{ block.shopify_attributes }}>
+          {% endif %}
+
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
+              srcset="
+                {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
+                {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w,
+                {{ block.settings.image | img_url: '900x900', crop: 'center' }} 900w
+              "
+              sizes="(max-width: 767px) 50vw, {{ 100 | divided_by: section.settings.columns_desktop | round }}vw"
+              alt="featured highlight"
+              loading="lazy"
+              width="600"
+              height="600"
+            >
+          {% else %}
+            <div class="ig-placeholder">Add image</div>
+          {% endif %}
+
+          {% if block.settings.link != blank %}
+            </a>
+          {% else %}
+            </div>
+          {% endif %}
+
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="ig-empty">Add image blocks in the theme editor to display the gallery.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BirdLabs — Image Gallery",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "header",
+      "content": "Grid"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" },
+        { "value": "5", "label": "5" },
+        { "value": "6", "label": "6" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns (mobile)",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between images",
+      "min": 4,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        { "value": "1 / 1", "label": "Square (1:1)" },
+        { "value": "4 / 3", "label": "Landscape (4:3)" },
+        { "value": "3 / 4", "label": "Portrait (3:4)" },
+        { "value": "16 / 9", "label": "Wide (16:9)" }
+      ],
+      "default": "1 / 1"
+    },
+    {
+      "type": "range",
+      "id": "image_radius",
+      "label": "Corner radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BirdLabs — Image Gallery",
+      "blocks": [
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" },
+        { "type": "image" }
+      ]
+    }
+  ]
+}
+{% endschema %}

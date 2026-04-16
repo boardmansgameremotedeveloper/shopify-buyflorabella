@@ -1,0 +1,396 @@
+{% liquid
+  assign h_align = section.settings.content_align
+  case h_align
+    when 'left'
+      assign text_align = 'left'
+      assign flex_align = 'flex-start'
+    when 'right'
+      assign text_align = 'right'
+      assign flex_align = 'flex-end'
+    when 'top'
+      assign text_align = 'left'
+      assign flex_align = 'flex-start'
+    else
+      assign text_align = 'center'
+      assign flex_align = 'center'
+  endcase
+%}
+
+{% style %}
+  #birdlabs-cb-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% if section.settings.min_height > 0 %}
+    min-height: {{ section.settings.min_height }}px;
+    display: flex;
+    align-items: {% if section.settings.content_align == 'top' %}flex-start{% else %}center{% endif %};
+    {% endif %}
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-container {
+    max-width: {{ section.settings.content_max_width }}px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    text-align: {{ text_align }};
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: {{ section.settings.eyebrow_color }};
+    margin: 0 0 0.75rem;
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-heading {
+    font-size: clamp(1.75rem, 4vw, {{ section.settings.heading_size }}rem);
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 1.25rem;
+    line-height: 1.15;
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-description {
+    font-size: 1.125rem;
+    color: {{ section.settings.description_color }};
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+    max-width: 65ch;
+    {% if text_align == 'center' %}margin-left: auto; margin-right: auto;{% endif %}
+    {% if text_align == 'right' %}margin-left: auto;{% endif %}
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: {{ flex_align }};
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    border-radius: {{ section.settings.button_radius }}px;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    white-space: nowrap;
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-btn--raise:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+  }
+
+  #birdlabs-cb-{{ section.id }} .cb-btn:not(.cb-btn--raise):hover {
+    filter: brightness(0.92);
+  }
+{% endstyle %}
+
+<section id="birdlabs-cb-{{ section.id }}">
+  <div class="cb-container">
+
+    {% if section.settings.eyebrow != blank %}
+      <p class="cb-eyebrow">{{ section.settings.eyebrow }}</p>
+    {% endif %}
+
+    {% if section.settings.heading != blank %}
+      <h2 class="cb-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.description != blank %}
+      <div class="cb-description">{{ section.settings.description }}</div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="cb-buttons">
+        {% for block in section.blocks %}
+          {% if block.type == 'button' %}
+
+            {%- comment -%} Build background style {%- endcomment -%}
+            {%- if block.settings.bg_type == 'gradient' -%}
+              {%- assign btn_bg = 'linear-gradient(' | append: block.settings.gradient_direction | append: ', ' | append: block.settings.gradient_from | append: ', ' | append: block.settings.gradient_to | append: ')' -%}
+            {%- else -%}
+              {%- assign btn_bg = block.settings.bg_color -%}
+            {%- endif -%}
+
+            {%- assign raise_class = '' -%}
+            {%- if block.settings.enable_raise -%}
+              {%- assign raise_class = ' cb-btn--raise' -%}
+            {%- endif -%}
+
+            {% if block.settings.url != blank %}
+              <a
+                href="{{ block.settings.url }}"
+                class="cb-btn{{ raise_class }}"
+                style="background: {{ btn_bg }}; color: {{ block.settings.text_color }};"
+                {{ block.shopify_attributes }}
+              >
+                {{- block.settings.label | default: 'Learn more' -}}
+              </a>
+            {% else %}
+              <span
+                class="cb-btn{{ raise_class }}"
+                style="background: {{ btn_bg }}; color: {{ block.settings.text_color }};"
+                {{ block.shopify_attributes }}
+              >
+                {{- block.settings.label | default: 'Learn more' -}}
+              </span>
+            {% endif %}
+
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "BirdLabs — Content Block",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 2,
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text (optional)"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_color",
+      "label": "Eyebrow color",
+      "default": "#7cb342"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your heading here"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size (rem)",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add your description here. This text supports basic formatting.</p>"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "content_align",
+      "label": "Content alignment",
+      "options": [
+        { "value": "left",   "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right",  "label": "Right" },
+        { "value": "top",    "label": "Top-left" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "range",
+      "id": "content_max_width",
+      "label": "Content max width",
+      "min": 480,
+      "max": 1280,
+      "step": 40,
+      "unit": "px",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "min_height",
+      "label": "Section min height (0 = auto)",
+      "min": 0,
+      "max": 800,
+      "step": 40,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Style"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button corner radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button text",
+          "default": "Learn more"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_raise",
+          "label": "Raise on hover",
+          "default": true
+        },
+        {
+          "type": "header",
+          "content": "Background"
+        },
+        {
+          "type": "select",
+          "id": "bg_type",
+          "label": "Background type",
+          "options": [
+            { "value": "solid",    "label": "Solid color" },
+            { "value": "gradient", "label": "Gradient" }
+          ],
+          "default": "solid"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Solid color",
+          "default": "#111111"
+        },
+        {
+          "type": "color",
+          "id": "gradient_from",
+          "label": "Gradient — start color",
+          "default": "#7c3aed"
+        },
+        {
+          "type": "color",
+          "id": "gradient_to",
+          "label": "Gradient — end color",
+          "default": "#d4ff00"
+        },
+        {
+          "type": "select",
+          "id": "gradient_direction",
+          "label": "Gradient direction",
+          "options": [
+            { "value": "to right",        "label": "Left → Right" },
+            { "value": "to bottom",       "label": "Top → Bottom" },
+            { "value": "135deg",          "label": "Diagonal (↘)" },
+            { "value": "to bottom right", "label": "Diagonal (↗)" }
+          ],
+          "default": "to right"
+        },
+        {
+          "type": "header",
+          "content": "Text"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text color",
+          "default": "#ffffff"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BirdLabs — Content Block",
+      "blocks": [
+        {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "bg_type": "solid",
+            "bg_color": "#111111",
+            "text_color": "#ffffff",
+            "enable_raise": true
+          }
+        },
+        {
+          "type": "button",
+          "settings": {
+            "label": "Learn More",
+            "bg_type": "gradient",
+            "gradient_from": "#7c3aed",
+            "gradient_to": "#d4ff00",
+            "gradient_direction": "to right",
+            "text_color": "#ffffff",
+            "enable_raise": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
