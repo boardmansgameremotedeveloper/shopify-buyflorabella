@@ -1,0 +1,674 @@
+{%- liquid
+  assign periodic_blocks = section.blocks | where: "type", "periodic_item"
+  assign feature_blocks   = section.blocks | where: "type", "feature_card"
+  assign analysis_blocks  = section.blocks | where: "type", "analysis_row"
+-%}
+
+<section class="birdlabs-minerals" id="birdlabs-minerals-{{ section.id }}">
+
+  {%- comment -%} ── Background layers ──────────────────────── {%- endcomment -%}
+  {%- if section.settings.bg_image != blank -%}
+    <div class="birdlabs-minerals__bg-image">
+      {{ section.settings.bg_image | image_url: width: 2400 | image_tag: loading: 'lazy', alt: '', class: 'birdlabs-minerals__bg-img' }}
+    </div>
+    <div class="birdlabs-minerals__bg-overlay"></div>
+  {%- endif -%}
+
+  <div class="fb-container birdlabs-minerals__inner">
+
+    {%- comment -%} ── Section heading ────────────────────────── {%- endcomment -%}
+    {%- if section.settings.heading != blank or section.settings.description != blank -%}
+      <div class="birdlabs-minerals__header">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="birdlabs-minerals__heading">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.description != blank -%}
+          <p class="birdlabs-minerals__description">{{ section.settings.description | escape }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── Area 1: Periodic table strip ───────────── {%- endcomment -%}
+    {%- if periodic_blocks.size > 0 -%}
+      <div class="birdlabs-minerals__pt-strip" id="birdlabs-minerals-pt-{{ section.id }}">
+        {%- for block in periodic_blocks -%}
+          <div class="birdlabs-minerals__pt-card" {{ block.shopify_attributes }}
+            {%- if block.settings.card_color != blank and block.settings.card_color != '#ffffff' -%}
+              style="border-color: {{ block.settings.card_color }}; --pt-accent: {{ block.settings.card_color }};"
+            {%- endif -%}
+          >
+            <span class="birdlabs-minerals__pt-number">{{ block.settings.atomic_number }}</span>
+            <span class="birdlabs-minerals__pt-symbol">{{ block.settings.symbol }}</span>
+            <span class="birdlabs-minerals__pt-name">{{ block.settings.name }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── Area 2: Feature cards ──────────────────── {%- endcomment -%}
+    {%- if feature_blocks.size > 0 -%}
+      <div class="birdlabs-minerals__cards" id="birdlabs-minerals-cards-{{ section.id }}">
+        {%- for block in feature_blocks -%}
+          <div class="birdlabs-minerals__card" {{ block.shopify_attributes }}>
+            <div class="birdlabs-minerals__card-symbol-box">{{ block.settings.symbol }}</div>
+            {%- if block.settings.name != blank -%}
+              <h3 class="birdlabs-minerals__card-name">{{ block.settings.name | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.benefit != blank -%}
+              <p class="birdlabs-minerals__card-benefit">{{ block.settings.benefit | escape }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} ── Area 3: Guaranteed Analysis dropdown ───── {%- endcomment -%}
+    {%- if analysis_blocks.size > 0 or section.settings.analysis_desc != blank -%}
+      <details class="birdlabs-minerals__analysis" id="birdlabs-minerals-analysis-{{ section.id }}">
+        <summary class="birdlabs-minerals__analysis-trigger">
+          <span>{{ section.settings.guaranteed_analysis_label | default: 'Guaranteed Analysis' }}</span>
+          <svg class="birdlabs-minerals__analysis-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </summary>
+        <div class="birdlabs-minerals__analysis-body">
+          {%- if analysis_blocks.size > 0 -%}
+            <table class="birdlabs-minerals__analysis-table">
+              <tbody>
+                {%- for block in analysis_blocks -%}
+                  <tr {{ block.shopify_attributes }}>
+                    <td class="birdlabs-minerals__analysis-symbol">{{ block.settings.symbol }}</td>
+                    <td class="birdlabs-minerals__analysis-name">{{ block.settings.name | escape }}</td>
+                    <td class="birdlabs-minerals__analysis-pct">{{ block.settings.percentage | escape }}</td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          {%- endif -%}
+          <hr class="birdlabs-minerals__analysis-divider">
+          {%- if section.settings.analysis_desc != blank -%}
+            <p class="birdlabs-minerals__analysis-desc">{{ section.settings.analysis_desc }}</p>
+          {%- endif -%}
+        </div>
+      </details>
+    {%- endif -%}
+
+    {%- comment -%} ── Area 4: Additional descriptive text ────── {%- endcomment -%}
+    {%- if section.settings.additional_text != blank -%}
+      <div class="birdlabs-minerals__additional-text">
+        {{ section.settings.additional_text }}
+      </div>
+    {%- endif -%}
+
+    {%- comment -%}
+      ── Area 5: Element symbol pills ────────────────
+      Stored as a comma-separated list, e.g.:
+      Mg,Fe,Zn,Cu,Mn,B,Co,Mo,Si,Ca,K,Na,P,S,Cl,Al,Ni,Ti
+    {%- endcomment -%}
+    {%- if section.settings.element_symbols != blank -%}
+      {%- assign symbol_list = section.settings.element_symbols | split: ',' -%}
+      <div class="birdlabs-minerals__pills">
+        {%- for sym in symbol_list -%}
+          {%- assign sym_clean = sym | strip -%}
+          {%- if sym_clean != blank -%}
+            <span class="birdlabs-minerals__pill">{{ sym_clean }}</span>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+<style>
+
+/* ── Outer section ────────────────────────────────────── */
+#birdlabs-minerals-{{ section.id }} {
+  position: relative;
+  overflow: hidden;
+  background-color: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+/* ── Background image + overlay ──────────────────────── */
+.birdlabs-minerals__bg-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.birdlabs-minerals__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.birdlabs-minerals__bg-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: {{ section.settings.bg_overlay_color }};
+  opacity: {{ section.settings.bg_overlay_opacity | divided_by: 100.0 }};
+}
+.birdlabs-minerals__inner {
+  position: relative;
+  z-index: 2;
+}
+
+/* ── Section header ──────────────────────────────────── */
+.birdlabs-minerals__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.birdlabs-minerals__heading {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: {{ section.settings.heading_color }};
+  font-family: var(--font-heading-family, Georgia, serif);
+  margin: 0 0 0.625rem;
+  line-height: 1.15;
+}
+.birdlabs-minerals__description {
+  font-size: 1rem;
+  color: {{ section.settings.description_color }};
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* ── Area 1: Periodic table strip ────────────────────── */
+#birdlabs-minerals-pt-{{ section.id }} {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.birdlabs-minerals__pt-card {
+  position: relative;
+  background: #fff;
+  border: 1.5px solid rgba(124, 179, 66, 0.35);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.625rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 5rem;
+  max-width: 6rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+.birdlabs-minerals__pt-card:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(124, 179, 66, 0.25);
+}
+.birdlabs-minerals__pt-number {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.4rem;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.4);
+  line-height: 1;
+}
+.birdlabs-minerals__pt-symbol {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--pt-accent, #7cb342);
+  line-height: 1.1;
+  font-family: var(--font-heading-family, Georgia, serif);
+}
+.birdlabs-minerals__pt-name {
+  font-size: 0.6rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin-top: 0.1rem;
+}
+
+/* ── Area 2: Feature cards ───────────────────────────── */
+#birdlabs-minerals-cards-{{ section.id }} {
+  display: grid;
+  grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+@media (min-width: 768px) {
+  #birdlabs-minerals-cards-{{ section.id }} {
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+  }
+}
+.birdlabs-minerals__card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.25rem 1rem;
+  box-shadow: 0 2px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.birdlabs-minerals__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+}
+.birdlabs-minerals__card-symbol-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(124, 179, 66, 0.08);
+  border: 1.5px solid rgba(124, 179, 66, 0.3);
+  border-radius: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #7cb342;
+  font-family: var(--font-heading-family, Georgia, serif);
+  margin-bottom: 0.625rem;
+  line-height: 1.2;
+}
+.birdlabs-minerals__card-name {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 0.375rem;
+  font-family: var(--font-heading-family, Georgia, serif);
+}
+.birdlabs-minerals__card-benefit {
+  font-size: 0.8125rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── Area 3: Guaranteed Analysis ─────────────────────── */
+#birdlabs-minerals-analysis-{{ section.id }} {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.875rem;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  background: #fff;
+}
+.birdlabs-minerals__analysis-trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: #111;
+  list-style: none;
+  user-select: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+#birdlabs-minerals-analysis-{{ section.id }}[open] .birdlabs-minerals__analysis-trigger {
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+}
+.birdlabs-minerals__analysis-trigger::-webkit-details-marker { display: none; }
+.birdlabs-minerals__analysis-trigger::marker { display: none; }
+.birdlabs-minerals__analysis-arrow {
+  transition: transform 0.25s ease;
+  flex-shrink: 0;
+  color: #7cb342;
+}
+#birdlabs-minerals-analysis-{{ section.id }}[open] .birdlabs-minerals__analysis-arrow {
+  transform: rotate(180deg);
+}
+.birdlabs-minerals__analysis-body {
+  padding: 1rem 1.25rem 1.25rem;
+}
+.birdlabs-minerals__analysis-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.5rem;
+}
+.birdlabs-minerals__analysis-table td {
+  padding: 0.4rem 0.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.875rem;
+}
+.birdlabs-minerals__analysis-table tr:last-child td {
+  border-bottom: none;
+}
+.birdlabs-minerals__analysis-symbol {
+  font-weight: 700;
+  color: #7cb342;
+  width: 3.5rem;
+  font-family: var(--font-heading-family, Georgia, serif);
+}
+.birdlabs-minerals__analysis-name {
+  color: #374151;
+}
+.birdlabs-minerals__analysis-pct {
+  text-align: right;
+  color: #374151;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.birdlabs-minerals__analysis-divider {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 0.875rem 0;
+}
+.birdlabs-minerals__analysis-desc {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ── Area 4: Additional text ─────────────────────────── */
+.birdlabs-minerals__additional-text {
+  font-size: 0.9375rem;
+  color: {{ section.settings.text_color }};
+  line-height: 1.7;
+  margin-bottom: 1.75rem;
+  max-width: 72rem;
+}
+.birdlabs-minerals__additional-text p { margin: 0 0 0.75rem; }
+.birdlabs-minerals__additional-text p:last-child { margin-bottom: 0; }
+
+/* ── Area 5: Symbol pills ─────────────────────────────── */
+.birdlabs-minerals__pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+.birdlabs-minerals__pill {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #374151;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: var(--font-heading-family, Georgia, serif);
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.birdlabs-minerals__pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+
+/* ── Mobile adjustments ──────────────────────────────── */
+@media (max-width: 767px) {
+  #birdlabs-minerals-pt-{{ section.id }} {
+    gap: 0.5rem;
+  }
+  .birdlabs-minerals__pt-card {
+    min-width: 4rem;
+    max-width: 5rem;
+  }
+  .birdlabs-minerals__pt-symbol {
+    font-size: 1.5rem;
+  }
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "BirdLabs — Minerals",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 50,
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Inside Every Scoop"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Over 70 trace minerals in a molecular matrix designed by nature."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description color",
+      "default": "#4b5563"
+    },
+    {
+      "type": "header",
+      "content": "Guaranteed Analysis"
+    },
+    {
+      "type": "text",
+      "id": "guaranteed_analysis_label",
+      "label": "Dropdown label",
+      "default": "Guaranteed Analysis"
+    },
+    {
+      "type": "textarea",
+      "id": "analysis_desc",
+      "label": "Text below divider",
+      "default": "Percentages represent minimum guaranteed amounts per application."
+    },
+    {
+      "type": "header",
+      "content": "Additional text"
+    },
+    {
+      "type": "richtext",
+      "id": "additional_text",
+      "label": "Additional descriptive text"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#374151"
+    },
+    {
+      "type": "header",
+      "content": "Element symbol pills"
+    },
+    {
+      "type": "textarea",
+      "id": "element_symbols",
+      "label": "Element symbols (comma-separated)",
+      "info": "Enter symbols separated by commas, e.g.: Mg,Fe,Zn,Cu,Mn,B,Co,Mo",
+      "default": "Mg,Fe,Zn,Cu,Mn,B,Co,Mo,Si,Ca,K,Na,S,Al,Ni,Ti"
+    },
+    {
+      "type": "header",
+      "content": "Feature cards layout"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "label": "Columns (desktop)",
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "label": "Columns (mobile)",
+      "options": [
+        { "value": "1", "label": "1" },
+        { "value": "2", "label": "2" }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "header",
+      "content": "Background"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#f8f7f4"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image (optional)"
+    },
+    {
+      "type": "color",
+      "id": "bg_overlay_color",
+      "label": "Overlay color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "bg_overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay opacity",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "periodic_item",
+      "name": "Periodic element",
+      "settings": [
+        {
+          "type": "text",
+          "id": "symbol",
+          "label": "Element symbol",
+          "default": "Mg"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Element name",
+          "default": "Magnesium"
+        },
+        {
+          "type": "text",
+          "id": "atomic_number",
+          "label": "Atomic number",
+          "default": "12"
+        },
+        {
+          "type": "color",
+          "id": "card_color",
+          "label": "Accent color",
+          "default": "#7cb342"
+        }
+      ]
+    },
+    {
+      "type": "feature_card",
+      "name": "Feature card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "symbol",
+          "label": "Element symbol",
+          "default": "Mg"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Element name",
+          "default": "Magnesium"
+        },
+        {
+          "type": "textarea",
+          "id": "benefit",
+          "label": "Benefit description",
+          "default": "Supports deep green foliage and strong energy production in leaves."
+        }
+      ]
+    },
+    {
+      "type": "analysis_row",
+      "name": "Analysis row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "symbol",
+          "label": "Element symbol",
+          "default": "Mg"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Element name",
+          "default": "Magnesium"
+        },
+        {
+          "type": "text",
+          "id": "percentage",
+          "label": "Percentage",
+          "default": "0.50%"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "BirdLabs — Minerals",
+      "blocks": [
+        { "type": "periodic_item", "settings": { "symbol": "Mg", "name": "Magnesium", "atomic_number": "12" } },
+        { "type": "periodic_item", "settings": { "symbol": "Fe", "name": "Iron", "atomic_number": "26" } },
+        { "type": "periodic_item", "settings": { "symbol": "Zn", "name": "Zinc", "atomic_number": "30" } },
+        { "type": "periodic_item", "settings": { "symbol": "Cu", "name": "Copper", "atomic_number": "29" } },
+        { "type": "periodic_item", "settings": { "symbol": "Mn", "name": "Manganese", "atomic_number": "25" } },
+        { "type": "periodic_item", "settings": { "symbol": "B", "name": "Boron", "atomic_number": "5" } },
+        { "type": "feature_card", "settings": { "symbol": "Mg", "name": "Magnesium", "benefit": "Supports deep green foliage and strong energy production in leaves." } },
+        { "type": "feature_card", "settings": { "symbol": "Fe", "name": "Iron", "benefit": "Essential for chlorophyll production and oxygen transport in plants." } },
+        { "type": "feature_card", "settings": { "symbol": "Zn", "name": "Zinc", "benefit": "Activates enzymes and regulates growth hormones for healthy development." } },
+        { "type": "analysis_row", "settings": { "symbol": "Mg", "name": "Magnesium", "percentage": "0.50%" } },
+        { "type": "analysis_row", "settings": { "symbol": "Fe", "name": "Iron", "percentage": "0.30%" } },
+        { "type": "analysis_row", "settings": { "symbol": "Zn", "name": "Zinc", "percentage": "0.10%" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

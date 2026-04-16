@@ -229,6 +229,12 @@ After every iteration completes, Claude MUST create `.claude/iterations/iteratio
 | `go` | Execute current plan |
 | `prepare for iteration N` | Create new iteration stub |
 
+### Per-Iteration Checklist (Required)
+
+At the start of every iteration Claude must:
+1. **Re-scan `templates/index.json`** — the Shopify theme editor auto-updates this file; check for section additions, removals, or order changes that may affect the work
+2. Report any changes found before proceeding
+
 ---
 
 ## Iteration #1 — REQUIRED TASK
