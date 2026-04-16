@@ -11,34 +11,35 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
-      "type": "announcement-bar",
+    "header": {
+      "type": "header",
+      "settings": {
+        "menu": "main-menu"
+      }
+    },
+    "birdlabs_announcement_bar_cQzUUp": {
+      "type": "birdlabs-announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
+        "announcement_bwtzJ9": {
           "type": "announcement",
           "settings": {
-            "text": "Welcome to our store",
+            "text": "Free shipping on orders over $50 — Use code:",
             "coupon": "",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement-bar-0"
+        "announcement_bwtzJ9"
       ],
+      "name": "BirdLabs — Announcement Bar",
       "settings": {
         "change_slides_speed": 5
-      }
-    },
-    "header": {
-      "type": "header",
-      "settings": {
-        "menu": "main-menu"
       }
     }
   },
   "order": [
-    "announcement-bar",
-    "header"
+    "header",
+    "birdlabs_announcement_bar_cQzUUp"
   ]
 }
