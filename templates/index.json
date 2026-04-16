@@ -673,16 +673,55 @@
     "birdlabs_image_gallery_main": {
       "type": "birdlabs-image-gallery",
       "blocks": {
-        "img_1": { "type": "image", "settings": {} },
-        "img_2": { "type": "image", "settings": {} },
-        "img_3": { "type": "image", "settings": {} },
-        "img_4": { "type": "image", "settings": {} },
-        "img_5": { "type": "image", "settings": {} },
-        "img_6": { "type": "image", "settings": {} }
+        "img_1": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "img_2": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "img_3": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "img_4": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "img_5": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        },
+        "img_6": {
+          "type": "image",
+          "settings": {
+            "link": ""
+          }
+        }
       },
-      "block_order": ["img_1","img_2","img_3","img_4","img_5","img_6"],
+      "block_order": [
+        "img_1",
+        "img_2",
+        "img_3",
+        "img_4",
+        "img_5",
+        "img_6"
+      ],
       "name": "BirdLabs — Image Gallery",
       "settings": {
+        "heading": "",
+        "heading_color": "#111111",
         "columns_desktop": "3",
         "columns_mobile": "2",
         "gap": 16,
@@ -691,46 +730,6 @@
         "bg_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
-      }
-    },
-    "birdlabs_content_block_main": {
-      "type": "birdlabs-content-block",
-      "blocks": {
-        "btn_1": {
-          "type": "button",
-          "settings": {
-            "label": "Shop Now",
-            "bg_type": "solid",
-            "bg_color": "#111111",
-            "text_color": "#ffffff",
-            "enable_raise": true
-          }
-        },
-        "btn_2": {
-          "type": "button",
-          "settings": {
-            "label": "Learn More",
-            "bg_type": "gradient",
-            "gradient_from": "#7c3aed",
-            "gradient_to": "#d4ff00",
-            "gradient_direction": "to right",
-            "text_color": "#ffffff",
-            "enable_raise": true
-          }
-        }
-      },
-      "block_order": ["btn_1","btn_2"],
-      "name": "BirdLabs — Content Block",
-      "settings": {
-        "heading": "Your heading here",
-        "description": "<p>Add your description here. This text supports basic formatting.<\/p>",
-        "content_align": "center",
-        "content_max_width": 800,
-        "min_height": 0,
-        "bg_color": "#ffffff",
-        "button_radius": 8,
-        "padding_top": 80,
-        "padding_bottom": 80
       }
     },
     "community_callout": {
@@ -747,6 +746,60 @@
         "community_url": "",
         "community_button_label": "View grower stories"
       }
+    },
+    "birdlabs_content_block_main": {
+      "type": "birdlabs-content-block",
+      "blocks": {
+        "btn_1": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Now",
+            "url": "",
+            "enable_raise": true,
+            "bg_type": "solid",
+            "bg_color": "#111111",
+            "gradient_from": "#7c3aed",
+            "gradient_to": "#d4ff00",
+            "gradient_direction": "to right",
+            "text_color": "#ffffff"
+          }
+        },
+        "btn_2": {
+          "type": "button",
+          "settings": {
+            "label": "Learn More",
+            "url": "",
+            "enable_raise": true,
+            "bg_type": "gradient",
+            "bg_color": "#111111",
+            "gradient_from": "#7c3aed",
+            "gradient_to": "#d4ff00",
+            "gradient_direction": "to right",
+            "text_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "btn_1",
+        "btn_2"
+      ],
+      "name": "BirdLabs — Content Block",
+      "settings": {
+        "eyebrow": "",
+        "eyebrow_color": "#7cb342",
+        "heading": "Your heading here",
+        "heading_size": 3,
+        "heading_color": "#111111",
+        "description": "<p>Add your description here. This text supports basic formatting.</p>",
+        "description_color": "#4b5563",
+        "content_align": "center",
+        "content_max_width": 800,
+        "min_height": 0,
+        "bg_color": "#ffffff",
+        "button_radius": 8,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
@@ -762,7 +815,7 @@
     "education_preview",
     "birdlabs_videoreels_jrHRXN",
     "birdlabs_image_gallery_main",
-    "birdlabs_content_block_main",
-    "community_callout"
+    "community_callout",
+    "birdlabs_content_block_main"
   ]
 }
