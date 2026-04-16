@@ -594,6 +594,21 @@
     },
     "education_preview": {
       "type": "education-preview",
+      "blocks": {
+        "article_card_LBtaYw": {
+          "type": "article_card",
+          "settings": {
+            "image": "shopify://shop_images/Bioavailable_forms.jpg",
+            "meta": "7 min read",
+            "title": "More Than NPK: Why Soil Systems Matter",
+            "description": "Traditional fertilizers focus on NPK. Flora Bella focuses on the soil system that makes NPK work better.",
+            "article_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "article_card_LBtaYw"
+      ],
       "settings": {
         "heading": "Learn To Treat Soil As A Living System",
         "subheading": "Expert knowledge made accessible for gardeners at every level",
