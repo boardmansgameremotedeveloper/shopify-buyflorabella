@@ -670,6 +670,21 @@
         "padding_bottom": 60
       }
     },
+    "community_callout": {
+      "type": "community-callout",
+      "settings": {
+        "heading": "A Community For Growers Who Care About Soil Health",
+        "subheading": "Flora Bella exists to make expert level soil care simple for everyday gardeners. Join our growing community for seasonal tips, real case studies, and honest conversations about what works.",
+        "email_title": "Join the email list",
+        "email_description": "Enter your email to receive practical soil tips and early access to new batches.",
+        "email_button_label": "Get soil tips",
+        "omnisend_form_id": "",
+        "community_title": "Join our Grower Community",
+        "community_description": "Connect with other gardeners, share your results, and get tips from Flora Bella growers around the country.",
+        "community_url": "",
+        "community_button_label": "View grower stories"
+      }
+    },
     "birdlabs_image_gallery_main": {
       "type": "birdlabs-image-gallery",
       "blocks": {
@@ -720,29 +735,14 @@
       ],
       "name": "BirdLabs — Image Gallery",
       "settings": {
-        "heading": "Images",
+        "heading": "",
         "heading_color": "#111111",
         "thumbnail_size": 160,
         "image_radius": 8,
         "gap": 16,
         "bg_color": "#ffffff",
-        "padding_top": 60,
+        "padding_top": 20,
         "padding_bottom": 60
-      }
-    },
-    "community_callout": {
-      "type": "community-callout",
-      "settings": {
-        "heading": "A Community For Growers Who Care About Soil Health",
-        "subheading": "Flora Bella exists to make expert level soil care simple for everyday gardeners. Join our growing community for seasonal tips, real case studies, and honest conversations about what works.",
-        "email_title": "Join the email list",
-        "email_description": "Enter your email to receive practical soil tips and early access to new batches.",
-        "email_button_label": "Get soil tips",
-        "omnisend_form_id": "",
-        "community_title": "Join our Grower Community",
-        "community_description": "Connect with other gardeners, share your results, and get tips from Flora Bella growers around the country.",
-        "community_url": "",
-        "community_button_label": "View grower stories"
       }
     },
     "birdlabs_content_block_main": {
@@ -812,8 +812,8 @@
     "social_proof",
     "education_preview",
     "birdlabs_videoreels_jrHRXN",
-    "birdlabs_image_gallery_main",
     "community_callout",
+    "birdlabs_image_gallery_main",
     "birdlabs_content_block_main"
   ]
 }
