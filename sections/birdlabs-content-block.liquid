@@ -95,10 +95,19 @@
   #birdlabs-cb-{{ section.id }} .cb-btn:not(.cb-btn--raise):hover {
     filter: brightness(0.92);
   }
+
+  #birdlabs-cb-{{ section.id }} .cb-card-box {
+    background: {{ section.settings.card_box_bg }};
+    border: 1px solid {{ section.settings.card_box_border }};
+    border-radius: {{ section.settings.card_box_radius }}px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+    padding: {{ section.settings.card_box_padding }}px;
+  }
 {% endstyle %}
 
 <section id="birdlabs-cb-{{ section.id }}">
   <div class="cb-container">
+  {% if section.settings.show_card_box %}<div class="cb-card-box">{% endif %}
 
     {% if section.settings.eyebrow != blank %}
       <p class="cb-eyebrow">{{ section.settings.eyebrow }}</p>
@@ -153,6 +162,7 @@
       </div>
     {% endif %}
 
+  {% if section.settings.show_card_box %}</div>{% endif %}
   </div>
 </section>
 
@@ -242,6 +252,48 @@
       "step": 40,
       "unit": "px",
       "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Card Box"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_card_box",
+      "label": "Wrap content in a card box",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "card_box_bg",
+      "label": "Card box background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_box_border",
+      "label": "Card box border color",
+      "default": "#e5e7eb"
+    },
+    {
+      "type": "range",
+      "id": "card_box_radius",
+      "label": "Card box corner radius",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "card_box_padding",
+      "label": "Card box inner padding",
+      "min": 16,
+      "max": 96,
+      "step": 8,
+      "unit": "px",
+      "default": 48
     },
     {
       "type": "header",

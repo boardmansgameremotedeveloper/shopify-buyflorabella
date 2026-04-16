@@ -24,75 +24,152 @@
           "type": "stat",
           "settings": {
             "icon": "award",
-            "title": "25+ Years Trusted",
-            "description": "Backed by decades of use in commercial agriculture before coming to home gardens."
+            "title": "Quality Tested",
+            "description": "Every batch is third-party tested for purity, potency, and safety to ensure premium quality."
           }
         },
         "stat_3": {
           "type": "stat",
           "settings": {
-            "icon": "users",
-            "title": "Grower Community",
-            "description": "A growing network of home gardeners and small farm operators seeing real results."
+            "icon": "shield",
+            "title": "Science-Backed",
+            "description": "Formulations based on cutting-edge research and clinical studies in mineral nutrition."
           }
         },
         "stat_4": {
           "type": "stat",
           "settings": {
-            "icon": "shield",
-            "title": "Lab Verified",
-            "description": "Every batch tested for quality, consistency, and mineral completeness."
-          }
-        },
-        "val_1": {
-          "type": "value",
-          "settings": {
-            "title": "Transparency",
-            "description": "We share every ingredient, sourcing detail, and test result openly."
-          }
-        },
-        "val_2": {
-          "type": "value",
-          "settings": {
-            "title": "Integrity",
-            "description": "No synthetic fillers, no shortcuts — just what nature put in the ground."
-          }
-        },
-        "val_3": {
-          "type": "value",
-          "settings": {
-            "title": "Accessibility",
-            "description": "Commercial-grade mineral support, available to every home gardener."
-          }
-        },
-        "val_4": {
-          "type": "value",
-          "settings": {
-            "title": "Community",
-            "description": "Built by growers, for growers — your results shape our product."
+            "icon": "users",
+            "title": "Community First",
+            "description": "Join a vibrant community of growers on the journey to transform their garden soil."
           }
         }
       },
-      "block_order": [
-        "stat_1",
-        "stat_2",
-        "stat_3",
-        "stat_4",
-        "val_1",
-        "val_2",
-        "val_3",
-        "val_4"
-      ],
+      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"],
       "settings": {
         "heading": "Our Story",
-        "intro_text": "Founded on the belief that optimal health begins with proper mineral nutrition, Flora Bella is committed to providing the highest quality trace minerals to support your soil's daily nutritional uptake.",
+        "intro_text": "Founded on the belief that optimal soil begins with proper soil mineral nutrition, Flora Bella is committed to providing the highest quality trace minerals to support your soil's Daily nutritional uptake!",
         "mission_heading": "Our Mission",
-        "mission_body": "At Flora Bella, we believe that everyone deserves access to pure, bioavailable minerals that support healthy soil and resilient plants.\n\nSourced from ancient plant and animal deposits formed deep within the Earth over hundreds of thousands of years, each bag of Flora Bella delivers a naturally balanced spectrum of trace minerals.\n\nThrough rigorous testing and transparent sourcing, we give growers the knowledge and confidence to understand, supplement, and maintain soil mineral content where it matters most — at the root level.",
-        "values_heading": "What We Stand For"
+        "mission_body": "At Flora Bella, we believe that everyone deserves access to pure, bioavailable minerals that support healthy soil and resilient plants. Our mission is to bridge the gap between a plant's nutritional needs and the mineral-depleted soils common in today's backyard growing environments.\n\nSourced from ancient plant and animal deposits formed deep within the Earth over hundreds of thousands of years, each bag of Flora Bella delivers a naturally balanced spectrum of trace minerals to support long-term soil vitality.\n\nThrough rigorous testing and transparent sourcing, we aim to give growers the knowledge and confidence to understand, supplement, and maintain soil mineral content where it matters most — at the root level.",
+        "values_heading": ""
+      }
+    },
+    "birdlabs_feature_cards_about": {
+      "type": "birdlabs-feature-cards",
+      "blocks": {
+        "fc_1": {
+          "type": "card",
+          "settings": {
+            "icon": "sprout",
+            "icon_bg_color": "#7cb342",
+            "icon_color": "#ffffff",
+            "heading": "Pristine Sources",
+            "description": "Macros build plant structure. Micros enable function. Our 70+ Bio Trace minerals support enzymatic activity, structural integrity, flowering, and balanced growth cycles that are not addressed by macronutrients alone."
+          }
+        },
+        "fc_2": {
+          "type": "card",
+          "settings": {
+            "icon": "beaker",
+            "icon_bg_color": "#7cb342",
+            "icon_color": "#ffffff",
+            "heading": "Rigorous Testing",
+            "description": "Third-party tested for heavy metals, contaminants, and potency at every stage."
+          }
+        },
+        "fc_3": {
+          "type": "card",
+          "settings": {
+            "icon": "shield",
+            "icon_bg_color": "#7cb342",
+            "icon_color": "#ffffff",
+            "heading": "Bioavailable Forms",
+            "description": "Premium mineral forms engineered for maximum absorption and effectiveness."
+          }
+        },
+        "fc_4": {
+          "type": "card",
+          "settings": {
+            "icon": "tree",
+            "icon_bg_color": "#7cb342",
+            "icon_color": "#ffffff",
+            "heading": "Sustainable Practices",
+            "description": "Eco-friendly sourcing and packaging that protects the environments we depend on."
+          }
+        }
+      },
+      "block_order": ["fc_1", "fc_2", "fc_3", "fc_4"],
+      "name": "BirdLabs — Feature Cards",
+      "settings": {
+        "heading": "Our Sourcing & Quality Standards",
+        "subheading": "Every step, from source to supplement, meets the highest standards",
+        "heading_color": "#111111",
+        "subheading_color": "#374151",
+        "columns_desktop": "4",
+        "card_gap": 24,
+        "image_height": 192,
+        "card_radius": 16,
+        "card_bg": "#ffffff",
+        "card_border_color": "#e5e7eb",
+        "card_heading_color": "#111111",
+        "card_desc_color": "#6b7280",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "birdlabs_about_cta": {
+      "type": "birdlabs-content-block",
+      "blocks": {
+        "cta_btn_1": {
+          "type": "button",
+          "settings": {
+            "label": "Shop Products",
+            "url": "/collections/all",
+            "enable_raise": true,
+            "bg_type": "solid",
+            "bg_color": "#7cb342",
+            "text_color": "#ffffff"
+          }
+        },
+        "cta_btn_2": {
+          "type": "button",
+          "settings": {
+            "label": "Contact Us",
+            "url": "/pages/contact",
+            "enable_raise": true,
+            "bg_type": "solid",
+            "bg_color": "#f3f4f6",
+            "text_color": "#111111"
+          }
+        }
+      },
+      "block_order": ["cta_btn_1", "cta_btn_2"],
+      "name": "BirdLabs — Content Block",
+      "settings": {
+        "heading": "Join Our Wellness Community",
+        "description": "<p>Experience the <em>transformation<\/em> that pure, bioavailable minerals can make. Join thousands of satisfied customers who have transformed their soil's quality with Flora Bella.<\/p>",
+        "heading_color": "#111111",
+        "heading_size": 3,
+        "description_color": "#374151",
+        "content_align": "center",
+        "content_max_width": 760,
+        "min_height": 0,
+        "show_card_box": true,
+        "card_box_bg": "#ffffff",
+        "card_box_border": "#e5e7eb",
+        "card_box_radius": 24,
+        "card_box_padding": 48,
+        "bg_color": "#f5f5f0",
+        "button_radius": 12,
+        "padding_top": 60,
+        "padding_bottom": 80
       }
     }
   },
   "order": [
-    "main_about"
+    "main_about",
+    "birdlabs_feature_cards_about",
+    "birdlabs_about_cta"
   ]
 }
