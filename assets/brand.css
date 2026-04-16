@@ -355,6 +355,11 @@
 
 /* ─── Announcement bar override ─────────────────────────────── */
 .fb-announcement-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 101;
   background: linear-gradient(135deg, #7cb342 0%, #5a8a2e 60%, #7cb342 100%);
   background-size: 200% 100%;
   animation: fb-announcement-shimmer 4s ease infinite;
@@ -387,7 +392,7 @@
 /* ─── Header brand styles ───────────────────────────────────── */
 .fb-header {
   position: fixed;
-  top: 0;
+  top: var(--birdlabs-ann-height, 0px);
   left: 0;
   right: 0;
   z-index: 100;
@@ -1529,7 +1534,7 @@
 
 /* ─── Responsive body offset for fixed header ───────────────── */
 .fb-body-offset {
-  padding-top: 6rem;
+  padding-top: var(--birdlabs-total-header-offset, 6rem);
 }
 
 /* ─── Utility: hide decorative bg on reduced motion ─────────── */

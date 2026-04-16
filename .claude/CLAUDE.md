@@ -101,6 +101,16 @@ Claude should verify and populate this mentally during scan:
 - Do NOT introduce unsupported Shopify features
 - All work must remain **Shopify theme-compatible**
 
+### BirdLabs Custom Section Naming
+
+All custom sections created for this project (not Dawn originals) must:
+
+- Be **prefixed with `birdlabs-`** in the filename (e.g. `birdlabs-header.liquid`, `birdlabs-announcement-bar.liquid`)
+- Have their schema `"name"` field set to `"BirdLabs — <Section Name>"` so they appear clearly labeled in the Shopify theme editor (e.g. `"BirdLabs — Header"`)
+- Use `"BirdLabs — <Section Name>"` as the preset `"name"` as well
+
+This convention ensures BirdLabs custom sections are immediately distinguishable from Dawn base sections in both the codebase and the Shopify theme editor UI.
+
 ### File Handling
 - Prefer modifying existing Dawn patterns rather than replacing wholesale
 - Reuse snippets and sections when possible

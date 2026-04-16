@@ -1,0 +1,4 @@
+1.) the announcement bar, when it appears, overlaps the header.  examine the .css for both the announcement bar and the header and adjust so that the announcement bar takes all the necessary space if visible, or none if invisible.
+2.) create new copies of the existing announcement-bar.liquid and header.liquid files and prefix with 'birdlabs-'.  for example 'birdlabs-announcement-bar.liquid' and 'birdlabs-header.liquid'.
+3.) adjust CLAUDE.md to state the new custom sections should be prefixed with 'birdlabs-' for clarity and in packaging.  
+4.) when selecting the custom sections in the theme editor in shopify, the naming convention for the custom sections should be clear that they are a part of the 'birdlabs' custom section codeblocks.
