@@ -1,0 +1,98 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main_about": {
+      "type": "main-about",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "icon": "leaf",
+            "title": "Pure Sourcing",
+            "description": "Minerals sourced from pristine ancient sea beds and volcanic deposits, free from modern pollutants."
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "icon": "award",
+            "title": "25+ Years Trusted",
+            "description": "Backed by decades of use in commercial agriculture before coming to home gardens."
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "icon": "users",
+            "title": "Grower Community",
+            "description": "A growing network of home gardeners and small farm operators seeing real results."
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "icon": "shield",
+            "title": "Lab Verified",
+            "description": "Every batch tested for quality, consistency, and mineral completeness."
+          }
+        },
+        "val_1": {
+          "type": "value",
+          "settings": {
+            "title": "Transparency",
+            "description": "We share every ingredient, sourcing detail, and test result openly."
+          }
+        },
+        "val_2": {
+          "type": "value",
+          "settings": {
+            "title": "Integrity",
+            "description": "No synthetic fillers, no shortcuts — just what nature put in the ground."
+          }
+        },
+        "val_3": {
+          "type": "value",
+          "settings": {
+            "title": "Accessibility",
+            "description": "Commercial-grade mineral support, available to every home gardener."
+          }
+        },
+        "val_4": {
+          "type": "value",
+          "settings": {
+            "title": "Community",
+            "description": "Built by growers, for growers — your results shape our product."
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4",
+        "val_1",
+        "val_2",
+        "val_3",
+        "val_4"
+      ],
+      "settings": {
+        "heading": "Our Story",
+        "intro_text": "Founded on the belief that optimal health begins with proper mineral nutrition, Flora Bella is committed to providing the highest quality trace minerals to support your soil's daily nutritional uptake.",
+        "mission_heading": "Our Mission",
+        "mission_body": "At Flora Bella, we believe that everyone deserves access to pure, bioavailable minerals that support healthy soil and resilient plants.\n\nSourced from ancient plant and animal deposits formed deep within the Earth over hundreds of thousands of years, each bag of Flora Bella delivers a naturally balanced spectrum of trace minerals.\n\nThrough rigorous testing and transparent sourcing, we give growers the knowledge and confidence to understand, supplement, and maintain soil mineral content where it matters most — at the root level.",
+        "values_heading": "What We Stand For"
+      }
+    }
+  },
+  "order": [
+    "main_about"
+  ]
+}
