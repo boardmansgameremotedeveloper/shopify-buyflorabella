@@ -9,6 +9,49 @@
  */
 {
   "sections": {
+    "birdlabs_hero_AMiadz": {
+      "type": "birdlabs-hero",
+      "blocks": {
+        "trust_item_PwPkm4": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Over seventy trace minerals"
+          }
+        },
+        "trust_item_3KLbWW": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Loved by organic growers"
+          }
+        },
+        "trust_item_F466rU": {
+          "type": "trust_item",
+          "settings": {
+            "text": "From farmers to you"
+          }
+        }
+      },
+      "block_order": [
+        "trust_item_PwPkm4",
+        "trust_item_3KLbWW",
+        "trust_item_F466rU"
+      ],
+      "name": "BirdLabs — Hero",
+      "settings": {
+        "headline": "Wake UpYour Soil",
+        "subheadline": "Bio trace minerals that make every drop of fertilizer work harder.",
+        "body_text": "Flora Bella delivers commercial-grade trace minerals to home gardens. Strengthen soil health, support resilient plants, and bring deeper color and vitality to every bed, pot, and vegetable garden.",
+        "trust_box_heading": "Trusted for Over 25 Years.",
+        "trust_box_text": "Flora Bella works with naturally occurring mineral complexes that have supported commercial agriculture for decades. Now available delivered directly to your door.",
+        "enable_image_animation": false,
+        "button_primary_label": "Shop Bio Trace Mix",
+        "button_primary_url": "",
+        "button_secondary_label": "See Real Grower Results",
+        "button_secondary_url": "",
+        "show_buy_badge": true,
+        "buy_badge_label": "BUY NOW"
+      }
+    },
     "custom_hero": {
       "type": "custom-hero",
       "blocks": {
@@ -43,7 +86,9 @@
         "trust_box_heading": "Trusted for Over 25 Years.",
         "trust_box_text": "Flora Bella works with naturally occurring mineral complexes that have supported commercial agriculture for decades. Now available delivered directly to your door.",
         "button_primary_label": "Shop Bio Trace Mix",
+        "button_primary_url": "",
         "button_secondary_label": "See Real Grower Results",
+        "button_secondary_url": "",
         "show_buy_badge": true,
         "buy_badge_label": "BUY NOW"
       }
@@ -117,6 +162,7 @@
         "f3"
       ],
       "settings": {
+        "product": "",
         "badge_text": "Best Seller",
         "review_count": 487,
         "eyebrow": "FEATURED PRODUCT",
@@ -193,7 +239,8 @@
             "step_number": "01",
             "title": "Beneficial Microbes",
             "description": "Naturally occurring beneficial bacteria that transform your soil ecosystem.",
-            "highlights": "Convert nutrients into forms plants can absorb|Support root development through natural growth signaling|Compete with harmful organisms in the root zone|Improve tolerance to environmental stress"
+            "highlights": "Convert nutrients into forms plants can absorb|Support root development through natural growth signaling|Compete with harmful organisms in the root zone|Improve tolerance to environmental stress",
+            "image_url": ""
           }
         },
         "s2": {
@@ -202,7 +249,8 @@
             "step_number": "02",
             "title": "Humic Acid — Soil Structure & Retention",
             "description": "Humic acids are large organic compounds that improve how your soil holds and delivers nutrition.",
-            "highlights": "Improve soil structure, aggregation, and aeration|Increase water-holding capacity|Bind and retain nutrients in the root zone|Support beneficial microbial activity"
+            "highlights": "Improve soil structure, aggregation, and aeration|Increase water-holding capacity|Bind and retain nutrients in the root zone|Support beneficial microbial activity",
+            "image_url": ""
           }
         },
         "s3": {
@@ -211,7 +259,8 @@
             "step_number": "03",
             "title": "Fulvic Acid — Mineral Transport",
             "description": "Fulvic acids are smaller, highly bioavailable organic compounds that carry minerals where they're needed.",
-            "highlights": "Bind trace minerals into plant-usable forms|Facilitate movement of minerals through plant cell walls|Improve nutrient uptake efficiency"
+            "highlights": "Bind trace minerals into plant-usable forms|Facilitate movement of minerals through plant cell walls|Improve nutrient uptake efficiency",
+            "image_url": ""
           }
         }
       },
@@ -351,7 +400,8 @@
         "heading_color": "#ffffff",
         "subheading_color": "#9ca3af",
         "blog_handle": "news",
-        "cta_label": "View all articles"
+        "cta_label": "View all articles",
+        "cta_url": ""
       }
     },
     "video_reels": {
@@ -361,7 +411,11 @@
         "subheading": "Real gardens. Real results.",
         "background_color": "#0a0a0a",
         "heading_color": "#ffffff",
-        "subheading_color": "#9ca3af"
+        "subheading_color": "#9ca3af",
+        "video_type": "url",
+        "video_url": "",
+        "loop": false,
+        "muted": false
       }
     },
     "community_callout": {
@@ -372,13 +426,16 @@
         "email_title": "Join the email list",
         "email_description": "Enter your email to receive practical soil tips and early access to new batches.",
         "email_button_label": "Get soil tips",
+        "omnisend_form_id": "",
         "community_title": "Join our Grower Community",
         "community_description": "Connect with other gardeners, share your results, and get tips from Flora Bella growers around the country.",
+        "community_url": "",
         "community_button_label": "View grower stories"
       }
     }
   },
   "order": [
+    "birdlabs_hero_AMiadz",
     "custom_hero",
     "reassurance_strip",
     "featured_product_hero",
