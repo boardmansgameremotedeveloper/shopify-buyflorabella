@@ -11,16 +11,10 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "header": {
-      "type": "header",
-      "settings": {
-        "menu": "main-menu"
-      }
-    },
-    "birdlabs_announcement_bar_cQzUUp": {
+    "birdlabs_announcement_bar_9rGDWg": {
       "type": "birdlabs-announcement-bar",
       "blocks": {
-        "announcement_bwtzJ9": {
+        "announcement_YWkn3G": {
           "type": "announcement",
           "settings": {
             "text": "Free shipping on orders over $50 — Use code:",
@@ -30,16 +24,23 @@
         }
       },
       "block_order": [
-        "announcement_bwtzJ9"
+        "announcement_YWkn3G"
       ],
       "name": "BirdLabs — Announcement Bar",
       "settings": {
         "change_slides_speed": 5
       }
+    },
+    "birdlabs_header_hwje9n": {
+      "type": "birdlabs-header",
+      "name": "BirdLabs — Header",
+      "settings": {
+        "menu": "main-menu"
+      }
     }
   },
   "order": [
-    "header",
-    "birdlabs_announcement_bar_cQzUUp"
+    "birdlabs_announcement_bar_9rGDWg",
+    "birdlabs_header_hwje9n"
   ]
 }
