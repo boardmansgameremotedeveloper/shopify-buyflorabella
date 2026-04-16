@@ -291,6 +291,50 @@
         "padding_bottom": 36
       }
     },
+    "how_it_works": {
+      "type": "how-it-works",
+      "blocks": {
+        "s1": {
+          "type": "step",
+          "settings": {
+            "step_number": "01",
+            "title": "Beneficial Microbes",
+            "description": "Naturally occurring beneficial bacteria that transform your soil ecosystem.",
+            "highlights": "Convert nutrients into forms plants can absorb|Support root development through natural growth signaling|Compete with harmful organisms in the root zone|Improve tolerance to environmental stress",
+            "image_url": ""
+          }
+        },
+        "s2": {
+          "type": "step",
+          "settings": {
+            "step_number": "02",
+            "title": "Humic Acid — Soil Structure & Retention",
+            "description": "Humic acids are large organic compounds that improve how your soil holds and delivers nutrition.",
+            "highlights": "Improve soil structure, aggregation, and aeration|Increase water-holding capacity|Bind and retain nutrients in the root zone|Support beneficial microbial activity",
+            "image_url": ""
+          }
+        },
+        "s3": {
+          "type": "step",
+          "settings": {
+            "step_number": "03",
+            "title": "Fulvic Acid — Mineral Transport",
+            "description": "Fulvic acids are smaller, highly bioavailable organic compounds that carry minerals where they're needed.",
+            "highlights": "Bind trace minerals into plant-usable forms|Facilitate movement of minerals through plant cell walls|Improve nutrient uptake efficiency",
+            "image_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3"
+      ],
+      "settings": {
+        "heading": "How Flora Bella Works With Your Soil",
+        "subheading": "A precise blend of over 70 trace minerals working in harmony with your soil"
+      }
+    },
     "birdlabs_minerals_xWpddK": {
       "type": "birdlabs-minerals",
       "blocks": {
@@ -429,50 +473,6 @@
         "bg_overlay_opacity": 0,
         "padding_top": 60,
         "padding_bottom": 60
-      }
-    },
-    "how_it_works": {
-      "type": "how-it-works",
-      "blocks": {
-        "s1": {
-          "type": "step",
-          "settings": {
-            "step_number": "01",
-            "title": "Beneficial Microbes",
-            "description": "Naturally occurring beneficial bacteria that transform your soil ecosystem.",
-            "highlights": "Convert nutrients into forms plants can absorb|Support root development through natural growth signaling|Compete with harmful organisms in the root zone|Improve tolerance to environmental stress",
-            "image_url": ""
-          }
-        },
-        "s2": {
-          "type": "step",
-          "settings": {
-            "step_number": "02",
-            "title": "Humic Acid — Soil Structure & Retention",
-            "description": "Humic acids are large organic compounds that improve how your soil holds and delivers nutrition.",
-            "highlights": "Improve soil structure, aggregation, and aeration|Increase water-holding capacity|Bind and retain nutrients in the root zone|Support beneficial microbial activity",
-            "image_url": ""
-          }
-        },
-        "s3": {
-          "type": "step",
-          "settings": {
-            "step_number": "03",
-            "title": "Fulvic Acid — Mineral Transport",
-            "description": "Fulvic acids are smaller, highly bioavailable organic compounds that carry minerals where they're needed.",
-            "highlights": "Bind trace minerals into plant-usable forms|Facilitate movement of minerals through plant cell walls|Improve nutrient uptake efficiency",
-            "image_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "s1",
-        "s2",
-        "s3"
-      ],
-      "settings": {
-        "heading": "How Flora Bella Works With Your Soil",
-        "subheading": "A precise blend of over 70 trace minerals working in harmony with your soil"
       }
     },
     "mineral_composition": {
@@ -677,8 +677,8 @@
     "birdlabs_multicolumn_gaxYUh",
     "benefits_grid",
     "birdlabs_multirow_iM6z6N",
-    "birdlabs_minerals_xWpddK",
     "how_it_works",
+    "birdlabs_minerals_xWpddK",
     "mineral_composition",
     "social_proof",
     "education_preview",
