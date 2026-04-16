@@ -175,6 +175,146 @@
         "padding_bottom": 60
       }
     },
+    "birdlabs_minerals_xWpddK": {
+      "type": "birdlabs-minerals",
+      "blocks": {
+        "periodic_item_yTHjeA": {
+          "type": "periodic_item",
+          "settings": {
+            "symbol": "Mg",
+            "name": "Magnesium",
+            "atomic_number": "12",
+            "card_color": "#7cb342"
+          }
+        },
+        "periodic_item_XYyGh3": {
+          "type": "periodic_item",
+          "settings": {
+            "symbol": "Fe",
+            "name": "Iron",
+            "atomic_number": "26",
+            "card_color": "#7cb342"
+          }
+        },
+        "periodic_item_8YpFNm": {
+          "type": "periodic_item",
+          "settings": {
+            "symbol": "Zn",
+            "name": "Zinc",
+            "atomic_number": "30",
+            "card_color": "#7cb342"
+          }
+        },
+        "periodic_item_FEYeCr": {
+          "type": "periodic_item",
+          "settings": {
+            "symbol": "Cu",
+            "name": "Copper",
+            "atomic_number": "29",
+            "card_color": "#7cb342"
+          }
+        },
+        "periodic_item_MRERic": {
+          "type": "periodic_item",
+          "settings": {
+            "symbol": "Mn",
+            "name": "Manganese",
+            "atomic_number": "25",
+            "card_color": "#7cb342"
+          }
+        },
+        "periodic_item_YN87Hb": {
+          "type": "periodic_item",
+          "settings": {
+            "symbol": "B",
+            "name": "Boron",
+            "atomic_number": "5",
+            "card_color": "#7cb342"
+          }
+        },
+        "feature_card_Xqda87": {
+          "type": "feature_card",
+          "settings": {
+            "symbol": "Mg",
+            "name": "Magnesium",
+            "benefit": "Supports deep green foliage and strong energy production in leaves."
+          }
+        },
+        "feature_card_yeCWQD": {
+          "type": "feature_card",
+          "settings": {
+            "symbol": "Fe",
+            "name": "Iron",
+            "benefit": "Essential for chlorophyll production and oxygen transport in plants."
+          }
+        },
+        "feature_card_zNHnNh": {
+          "type": "feature_card",
+          "settings": {
+            "symbol": "Zn",
+            "name": "Zinc",
+            "benefit": "Activates enzymes and regulates growth hormones for healthy development."
+          }
+        },
+        "analysis_row_r4U49e": {
+          "type": "analysis_row",
+          "settings": {
+            "symbol": "Mg",
+            "name": "Magnesium",
+            "percentage": "0.50%"
+          }
+        },
+        "analysis_row_Mm4prm": {
+          "type": "analysis_row",
+          "settings": {
+            "symbol": "Fe",
+            "name": "Iron",
+            "percentage": "0.30%"
+          }
+        },
+        "analysis_row_QTQHpr": {
+          "type": "analysis_row",
+          "settings": {
+            "symbol": "Zn",
+            "name": "Zinc",
+            "percentage": "0.10%"
+          }
+        }
+      },
+      "block_order": [
+        "periodic_item_yTHjeA",
+        "periodic_item_XYyGh3",
+        "periodic_item_8YpFNm",
+        "periodic_item_FEYeCr",
+        "periodic_item_MRERic",
+        "periodic_item_YN87Hb",
+        "feature_card_Xqda87",
+        "feature_card_yeCWQD",
+        "feature_card_zNHnNh",
+        "analysis_row_r4U49e",
+        "analysis_row_Mm4prm",
+        "analysis_row_QTQHpr"
+      ],
+      "name": "BirdLabs — Minerals",
+      "settings": {
+        "heading": "Inside Every Scoop",
+        "description": "Over 70 trace minerals in a molecular matrix designed by nature.",
+        "heading_color": "#111111",
+        "description_color": "#4b5563",
+        "guaranteed_analysis_label": "Guaranteed Analysis",
+        "analysis_desc": "Percentages represent minimum guaranteed amounts per application.",
+        "additional_text": "",
+        "text_color": "#374151",
+        "element_symbols": "Mg,Fe,Zn,Cu,Mn,B,Co,Mo,Si,Ca,K,Na,S,Al,Ni,Ti",
+        "columns_desktop": 3,
+        "columns_mobile": "2",
+        "bg_color": "#f8f7f4",
+        "bg_overlay_color": "#000000",
+        "bg_overlay_opacity": 0,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "featured_product_hero": {
       "type": "featured-product-hero",
       "blocks": {
@@ -476,12 +616,70 @@
         "community_url": "",
         "community_button_label": "View grower stories"
       }
+    },
+    "birdlabs_multirow_iM6z6N": {
+      "type": "birdlabs-multirow",
+      "blocks": {
+        "row_tDc67B": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_CkChN9": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_QbKhWJ": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_tDc67B",
+        "row_CkChN9",
+        "row_QbKhWJ"
+      ],
+      "name": "BirdLabs — Multi Row",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "birdlabs_hero_AMiadz",
     "reassurance_strip",
     "birdlabs_multicolumn_gaxYUh",
+    "birdlabs_multirow_iM6z6N",
+    "birdlabs_minerals_xWpddK",
     "featured_product_hero",
     "benefits_grid",
     "how_it_works",
