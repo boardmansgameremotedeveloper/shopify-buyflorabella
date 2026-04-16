@@ -165,18 +165,21 @@
 
               <div class="fc-card-img-wrap">
                 {% if block.settings.image != blank %}
-                  <img
-                    src="{{ block.settings.image | img_url: '800x500', crop: 'center' }}"
-                    alt="{{ block.settings.heading | escape }}"
-                    class="fc-card-img"
-                    loading="lazy"
-                    width="800"
-                    height="{{ section.settings.image_height }}"
-                  >
+                  {{
+                    block.settings.image
+                    | image_url: width: 800
+                    | image_tag:
+                      alt: block.settings.heading,
+                      class: 'fc-card-img',
+                      loading: 'lazy',
+                      widths: '400,600,800',
+                      sizes: '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
+                  }}
                 {% else %}
                   <div class="fc-card-img-placeholder">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/>
+                      <rect x="3" y="3" width="18" height="18" rx="2"/>
+                      <circle cx="8.5" cy="8.5" r="1.5"/>
                       <polyline points="21 15 16 10 5 21"/>
                     </svg>
                   </div>
