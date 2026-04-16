@@ -175,6 +175,62 @@
         "padding_bottom": 60
       }
     },
+    "birdlabs_multirow_iM6z6N": {
+      "type": "birdlabs-multirow",
+      "blocks": {
+        "row_tDc67B": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_CkChN9": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        },
+        "row_QbKhWJ": {
+          "type": "row",
+          "settings": {
+            "caption": "Caption",
+            "heading": "Row",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "button_label": "Button label",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "row_tDc67B",
+        "row_CkChN9",
+        "row_QbKhWJ"
+      ],
+      "name": "BirdLabs — Multi Row",
+      "settings": {
+        "image_height": "medium",
+        "desktop_image_width": "medium",
+        "image_layout": "alternate-left",
+        "heading_size": "h1",
+        "text_style": "body",
+        "button_style": "secondary",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "row_color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "birdlabs_minerals_xWpddK": {
       "type": "birdlabs-minerals",
       "blocks": {
@@ -313,45 +369,6 @@
         "bg_overlay_opacity": 0,
         "padding_top": 60,
         "padding_bottom": 60
-      }
-    },
-    "featured_product_hero": {
-      "type": "featured-product-hero",
-      "blocks": {
-        "f1": {
-          "type": "feature",
-          "settings": {
-            "title": "70+ Trace Minerals",
-            "description": "A full spectrum of naturally occurring trace minerals in every application."
-          }
-        },
-        "f2": {
-          "type": "feature",
-          "settings": {
-            "title": "Humic & Fulvic Acids",
-            "description": "Supports mineral transport and soil structure at the microscopic level."
-          }
-        },
-        "f3": {
-          "type": "feature",
-          "settings": {
-            "title": "Beneficial Biology",
-            "description": "Natural microbes that awaken dormant soil potential and support root health."
-          }
-        }
-      },
-      "block_order": [
-        "f1",
-        "f2",
-        "f3"
-      ],
-      "settings": {
-        "product": "",
-        "badge_text": "Best Seller",
-        "review_count": 487,
-        "eyebrow": "FEATURED PRODUCT",
-        "heading": "Flora Bella Bio Trace Mix",
-        "description": "Our signature blend of over 70 trace minerals, humic acid, fulvic acid, and beneficial biology. One addition to your watering routine transforms how your soil performs."
       }
     },
     "benefits_grid": {
@@ -588,45 +605,31 @@
         "cta_url": ""
       }
     },
-    "video_reels": {
-      "type": "video-reels",
-      "settings": {
-        "heading": "See Flora Bella In Action",
-        "subheading": "Real gardens. Real results.",
-        "background_color": "#0a0a0a",
-        "heading_color": "#ffffff",
-        "subheading_color": "#9ca3af",
-        "video_type": "url",
-        "video_url": "",
-        "loop": false,
-        "muted": false
-      }
-    },
-    "birdlabs_videoreels_main": {
+    "birdlabs_videoreels_jrHRXN": {
       "type": "birdlabs-videoreels",
       "blocks": {
-        "vr_block_1": {
+        "video_reel_njeefk": {
           "type": "video_reel",
           "settings": {
             "title": "How To Mix Flora Bella",
             "video_url": "https://www.youtube.com/watch?v=-SFmEtrPzd0"
           }
         },
-        "vr_block_2": {
+        "video_reel_cytBc6": {
           "type": "video_reel",
           "settings": {
             "title": "Compost Tea Mix",
             "video_url": "https://www.youtube.com/watch?v=3L2qpacas2s"
           }
         },
-        "vr_block_3": {
+        "video_reel_RbXJPc": {
           "type": "video_reel",
           "settings": {
             "title": "Flora Bella Trace Minerals",
             "video_url": "https://www.youtube.com/watch?v=ZjHmtGw0ZqA"
           }
         },
-        "vr_block_4": {
+        "video_reel_7XXLzP": {
           "type": "video_reel",
           "settings": {
             "title": "Flora Bella Waterfall Scene",
@@ -635,10 +638,10 @@
         }
       },
       "block_order": [
-        "vr_block_1",
-        "vr_block_2",
-        "vr_block_3",
-        "vr_block_4"
+        "video_reel_njeefk",
+        "video_reel_cytBc6",
+        "video_reel_RbXJPc",
+        "video_reel_7XXLzP"
       ],
       "name": "BirdLabs — Video Reels",
       "settings": {
@@ -646,7 +649,7 @@
         "description": "Watch exactly how we mix and apply Flora Bella in real gardens. Select a video below to switch views.",
         "show_view_more": true,
         "view_more_label": "View more on YouTube",
-        "view_more_url": "https://www.youtube.com/@buyflorabella",
+        "view_more_url": "",
         "bg_color": "#f9fafb",
         "padding_top": 60,
         "padding_bottom": 60
@@ -666,62 +669,6 @@
         "community_url": "",
         "community_button_label": "View grower stories"
       }
-    },
-    "birdlabs_multirow_iM6z6N": {
-      "type": "birdlabs-multirow",
-      "blocks": {
-        "row_tDc67B": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_CkChN9": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_QbKhWJ": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "row_tDc67B",
-        "row_CkChN9",
-        "row_QbKhWJ"
-      ],
-      "name": "BirdLabs — Multi Row",
-      "settings": {
-        "image_height": "medium",
-        "desktop_image_width": "medium",
-        "image_layout": "alternate-left",
-        "heading_size": "h1",
-        "text_style": "body",
-        "button_style": "secondary",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "row_color_scheme": "",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
@@ -730,14 +677,12 @@
     "birdlabs_multicolumn_gaxYUh",
     "birdlabs_multirow_iM6z6N",
     "birdlabs_minerals_xWpddK",
-    "featured_product_hero",
     "benefits_grid",
     "how_it_works",
     "mineral_composition",
     "social_proof",
     "education_preview",
-    "video_reels",
-    "birdlabs_videoreels_main",
+    "birdlabs_videoreels_jrHRXN",
     "community_callout"
   ]
 }
