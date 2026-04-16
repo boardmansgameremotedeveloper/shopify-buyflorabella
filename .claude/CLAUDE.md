@@ -101,6 +101,12 @@ Claude should verify and populate this mentally during scan:
 - Do NOT introduce unsupported Shopify features
 - All work must remain **Shopify theme-compatible**
 
+### Schema Name Character Limit
+
+All Shopify section schema `"name"` values (and preset `"name"` values) **must be 25 characters or fewer**. This is a Shopify theme editor constraint. Count carefully before saving — names that exceed 25 chars will be truncated or rejected by Shopify.
+
+---
+
 ### BirdLabs Custom Section Naming
 
 All custom sections created for this project (not Dawn originals) must:
@@ -203,8 +209,15 @@ iteration-N-claude-to-execute.md
 ↓
 [execution]
 ↓
-iteration-N-outcome.md
+iteration-N-outcome.md  ← REQUIRED after every iteration
 
+
+### Outcome Document (Required)
+
+After every iteration completes, Claude MUST create `.claude/iterations/iteration-N-outcome.md` documenting:
+- What was done (file-by-file summary)
+- Any decisions made or constraints discovered
+- Known issues or follow-up items
 
 ---
 

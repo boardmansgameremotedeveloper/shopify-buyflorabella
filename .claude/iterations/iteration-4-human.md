@@ -1,0 +1,5 @@
+1) adjust CLAUDE.md to indicate that each iteration should produce an outcome.md document.
+2) create a new HERO section, copying the existing hero area.  I am not sure how this is done because I do not see any section with a 'hero' naming convention.  Find it, duplicate a 'birdlabs-' custom area (if it is section, make it a section but I am not sure what it is supposed to be, so figure out what is supposed to be).
+3) update CLAUDE.md to indicate that the character limit on all shopify section schema 'name' values is 25 or less characters.
+4) re-read sections/header-group.json for any changes to know about.
+5) the 'hero image' needs an effect.  we have an existing effect on the hero image at https://buyflorabella.com.  if possible, read the single home page and see if we can scrape and re-create this floating image effect.  if not able to read the web page, then the hero image should have a checkbox which 'enables animation' and if so, the image should appear to resize slightly larger, and then shrink back, and repeat this effect in a loop.

@@ -4,7 +4,8 @@
       "Bash(python3 -c ' *)",
       "Read(//tmp/**)",
       "Read(//var/www/html/traceminerals_boardmansgame_com/frontend/hydrogen-frontend-v7/app/componentsMockup2/pages/**)",
-      "Read(//var/www/html/traceminerals_boardmansgame_com/frontend/hydrogen-frontend-v7/app/componentsMockup2/components/**)"
+      "Read(//var/www/html/traceminerals_boardmansgame_com/frontend/hydrogen-frontend-v7/app/componentsMockup2/components/**)",
+      "WebFetch(domain:buyflorabella.com)"
     ]
   }
 }
