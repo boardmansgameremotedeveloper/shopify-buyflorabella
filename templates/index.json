@@ -175,6 +175,66 @@
         "padding_bottom": 60
       }
     },
+    "benefits_grid": {
+      "type": "benefits-grid",
+      "blocks": {
+        "b1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Compost-Friendly Trace Minerals",
+            "description": "Designed to work alongside compost and living soil systems — helping unlock what your soil is already capable of."
+          }
+        },
+        "b2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Ancient + Mineral-Dense",
+            "description": "Made from mineral deposits formed over thousands of years — carrying complexity you can't replicate in a lab."
+          }
+        },
+        "b3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Born in the USA",
+            "description": "Sourced and crafted in the United States, composted for 6–8 months to reawaken naturally occurring microbes and biology."
+          }
+        },
+        "b4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Iron-Ore Derived Blend",
+            "description": "Encapsulated in an iron core, preserving the natural biology in the Bucatunna clay."
+          }
+        },
+        "b5": {
+          "type": "benefit",
+          "settings": {
+            "title": "Biology Included",
+            "description": "Designed to support beneficial microbes and nutrient cycling — the living foundation behind healthy, resilient soil."
+          }
+        },
+        "b6": {
+          "type": "benefit",
+          "settings": {
+            "title": "Handled with Care + Lab Verified",
+            "description": "Gently processed and packaged with care, with quality checks to support consistency and peace of mind."
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5",
+        "b6"
+      ],
+      "settings": {
+        "eyebrow": "WHY GROWERS CHOOSE FLORA BELLA",
+        "heading": "Built Different. Works Different.",
+        "subheading": "Six reasons growers trust Flora Bella season after season"
+      }
+    },
     "birdlabs_multirow_iM6z6N": {
       "type": "birdlabs-multirow",
       "blocks": {
@@ -369,66 +429,6 @@
         "bg_overlay_opacity": 0,
         "padding_top": 60,
         "padding_bottom": 60
-      }
-    },
-    "benefits_grid": {
-      "type": "benefits-grid",
-      "blocks": {
-        "b1": {
-          "type": "benefit",
-          "settings": {
-            "title": "Compost-Friendly Trace Minerals",
-            "description": "Designed to work alongside compost and living soil systems — helping unlock what your soil is already capable of."
-          }
-        },
-        "b2": {
-          "type": "benefit",
-          "settings": {
-            "title": "Ancient + Mineral-Dense",
-            "description": "Made from mineral deposits formed over thousands of years — carrying complexity you can't replicate in a lab."
-          }
-        },
-        "b3": {
-          "type": "benefit",
-          "settings": {
-            "title": "Born in the USA",
-            "description": "Sourced and crafted in the United States, composted for 6–8 months to reawaken naturally occurring microbes and biology."
-          }
-        },
-        "b4": {
-          "type": "benefit",
-          "settings": {
-            "title": "Iron-Ore Derived Blend",
-            "description": "Encapsulated in an iron core, preserving the natural biology in the Bucatunna clay."
-          }
-        },
-        "b5": {
-          "type": "benefit",
-          "settings": {
-            "title": "Biology Included",
-            "description": "Designed to support beneficial microbes and nutrient cycling — the living foundation behind healthy, resilient soil."
-          }
-        },
-        "b6": {
-          "type": "benefit",
-          "settings": {
-            "title": "Handled with Care + Lab Verified",
-            "description": "Gently processed and packaged with care, with quality checks to support consistency and peace of mind."
-          }
-        }
-      },
-      "block_order": [
-        "b1",
-        "b2",
-        "b3",
-        "b4",
-        "b5",
-        "b6"
-      ],
-      "settings": {
-        "eyebrow": "WHY GROWERS CHOOSE FLORA BELLA",
-        "heading": "Built Different. Works Different.",
-        "subheading": "Six reasons growers trust Flora Bella season after season"
       }
     },
     "how_it_works": {
@@ -675,9 +675,9 @@
     "birdlabs_hero_AMiadz",
     "reassurance_strip",
     "birdlabs_multicolumn_gaxYUh",
+    "benefits_grid",
     "birdlabs_multirow_iM6z6N",
     "birdlabs_minerals_xWpddK",
-    "benefits_grid",
     "how_it_works",
     "mineral_composition",
     "social_proof",
