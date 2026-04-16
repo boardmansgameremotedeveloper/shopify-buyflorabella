@@ -165,11 +165,18 @@
 
               <div class="fc-card-img-wrap">
                 {% if block.settings.image != blank %}
-                {{
-                  block.settings.image
-                  | image_url: width: 800
-                  | image_tag: alt: block.settings.heading | escape, class: 'fc-card-img', loading: 'lazy'
-                }}
+                  {%- assign alt_text = block.settings.heading | default: 'Feature image' | escape -%}
+
+                  {{
+                    block.settings.image
+                    | image_url: width: 800
+                    | image_tag:
+                      alt: alt_text,
+                      class: 'fc-card-img',
+                      loading: 'lazy',
+                      widths: '400,600,800',
+                      sizes: '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw'
+                  }}
                 {% else %}
                   <div class="fc-card-img-placeholder">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
