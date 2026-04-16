@@ -20,23 +20,28 @@
     line-height: 1.2;
   }
 
+  /* Desktop: single row of 6 fixed-size square thumbnails */
   #birdlabs-ig-{{ section.id }} .ig-grid {
-    display: grid;
-    grid-template-columns: repeat({{ section.settings.columns_mobile }}, 1fr);
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
     gap: {{ section.settings.gap }}px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
 
-  @media (min-width: 768px) {
-    #birdlabs-ig-{{ section.id }} .ig-grid {
-      grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
-    }
+  #birdlabs-ig-{{ section.id }} .ig-grid::-webkit-scrollbar {
+    display: none;
   }
 
   #birdlabs-ig-{{ section.id }} .ig-item {
     display: block;
+    flex-shrink: 0;
+    width: {{ section.settings.thumbnail_size }}px;
+    height: {{ section.settings.thumbnail_size }}px;
     overflow: hidden;
     border-radius: {{ section.settings.image_radius }}px;
-    aspect-ratio: {{ section.settings.image_ratio }};
     position: relative;
     text-decoration: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -76,6 +81,24 @@
     padding: 3rem 0;
     font-size: 0.9rem;
   }
+
+  /* Mobile: 2-column responsive grid */
+  @media (max-width: 767px) {
+    #birdlabs-ig-{{ section.id }} .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      flex-wrap: unset;
+      justify-content: unset;
+      overflow-x: unset;
+    }
+
+    #birdlabs-ig-{{ section.id }} .ig-item {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      flex-shrink: unset;
+    }
+  }
 {% endstyle %}
 
 <section id="birdlabs-ig-{{ section.id }}">
@@ -99,15 +122,14 @@
             <img
               src="{{ block.settings.image | img_url: '600x600', crop: 'center' }}"
               srcset="
-                {{ block.settings.image | img_url: '400x400', crop: 'center' }} 400w,
-                {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w,
-                {{ block.settings.image | img_url: '900x900', crop: 'center' }} 900w
+                {{ block.settings.image | img_url: '300x300', crop: 'center' }} 300w,
+                {{ block.settings.image | img_url: '600x600', crop: 'center' }} 600w
               "
-              sizes="(max-width: 767px) 50vw, {{ 100 | divided_by: section.settings.columns_desktop | round }}vw"
+              sizes="(max-width: 767px) 50vw, {{ section.settings.thumbnail_size }}px"
               alt="featured highlight"
               loading="lazy"
-              width="600"
-              height="600"
+              width="{{ section.settings.thumbnail_size }}"
+              height="{{ section.settings.thumbnail_size }}"
             >
           {% else %}
             <div class="ig-placeholder">Add image</div>
@@ -148,61 +170,38 @@
     },
     {
       "type": "header",
-      "content": "Grid"
-    },
-    {
-      "type": "select",
-      "id": "columns_desktop",
-      "label": "Columns (desktop)",
-      "options": [
-        { "value": "3", "label": "3" },
-        { "value": "4", "label": "4" },
-        { "value": "5", "label": "5" },
-        { "value": "6", "label": "6" }
-      ],
-      "default": "3"
-    },
-    {
-      "type": "select",
-      "id": "columns_mobile",
-      "label": "Columns (mobile)",
-      "options": [
-        { "value": "2", "label": "2" },
-        { "value": "3", "label": "3" }
-      ],
-      "default": "2"
+      "content": "Thumbnails"
     },
     {
       "type": "range",
-      "id": "gap",
-      "label": "Gap between images",
-      "min": 4,
-      "max": 40,
-      "step": 4,
+      "id": "thumbnail_size",
+      "label": "Thumbnail size",
+      "info": "Width and height of each square thumbnail (desktop). On mobile, thumbnails fill 50% of screen width.",
+      "min": 60,
+      "max": 320,
+      "step": 10,
       "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "select",
-      "id": "image_ratio",
-      "label": "Image ratio",
-      "options": [
-        { "value": "1 / 1", "label": "Square (1:1)" },
-        { "value": "4 / 3", "label": "Landscape (4:3)" },
-        { "value": "3 / 4", "label": "Portrait (3:4)" },
-        { "value": "16 / 9", "label": "Wide (16:9)" }
-      ],
-      "default": "1 / 1"
+      "default": 160
     },
     {
       "type": "range",
       "id": "image_radius",
       "label": "Corner radius",
       "min": 0,
-      "max": 32,
+      "max": 80,
       "step": 2,
       "unit": "px",
       "default": 8
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap between thumbnails",
+      "min": 4,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 12
     },
     {
       "type": "header",
