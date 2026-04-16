@@ -100,12 +100,19 @@
 
 /* =========================
    SECTION SPACING CONTROL
-   (tightened + predictable)
    ========================= */
 #fb-hero-{{ section.id }} {
-  min-height: unset;
-  padding-top: {{ section.settings.padding_top }}px;
-  padding-bottom: {{ section.settings.padding_bottom }}px;
+  min-height: unset !important;
+  padding-top: {{ section.settings.padding_top }}px !important;
+  padding-bottom: {{ section.settings.padding_bottom }}px !important;
+}
+
+/* Mobile padding override */
+@media (max-width: 1023px) {
+  #fb-hero-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
+  }
 }
 
 /* =========================
@@ -114,13 +121,29 @@
 .fb-hero__grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 1.25rem;
   align-items: center;
 }
 
 @media (min-width: 1024px) {
   .fb-hero__grid {
     grid-template-columns: 1.15fr 0.85fr;
+    gap: 2.5rem;
+  }
+}
+
+/* =========================
+   MOBILE ADJUSTMENTS
+   ========================= */
+@media (max-width: 1023px) {
+  /* blobs overflow on narrow screens — hide them */
+  #fb-hero-{{ section.id }} .fb-hero__bg-blob {
+    display: none;
+  }
+
+  /* cap image width so it doesn't span full screen */
+  #fb-hero-{{ section.id }} .fb-hero__image {
+    max-width: 340px;
   }
 }
 
@@ -289,7 +312,7 @@
       "max": 160,
       "step": 2,
       "default": 10,
-      "label": "Top padding"
+      "label": "Top padding (desktop)"
     },
     {
       "type": "range",
@@ -298,7 +321,25 @@
       "max": 160,
       "step": 2,
       "default": 10,
-      "label": "Bottom padding"
+      "label": "Bottom padding (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 16,
+      "label": "Top padding (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "default": 16,
+      "label": "Bottom padding (mobile)"
     }
   ],
   "blocks": [
