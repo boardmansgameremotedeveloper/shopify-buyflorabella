@@ -17,9 +17,101 @@
         "cta_label": "Join our WhatsApp Community",
         "cta_url": ""
       }
+    },
+    "birdlabs_stats_community": {
+      "type": "birdlabs-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "50+",
+            "value_size": 3,
+            "value_color": "#111111",
+            "label": "Years in Use",
+            "label_size": 1,
+            "label_color": "#6b7280"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "70+",
+            "value_size": 3,
+            "value_color": "#111111",
+            "label": "Trace Minerals",
+            "label_size": 1,
+            "label_color": "#6b7280"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "10k+",
+            "value_size": 3,
+            "value_color": "#111111",
+            "label": "Happy Growers",
+            "label_size": 1,
+            "label_color": "#6b7280"
+          }
+        }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3"],
+      "name": "BirdLabs — Stats",
+      "settings": {
+        "heading": "Flora Bella By The Numbers",
+        "description": "Trusted by home gardeners and commercial growers for decades.",
+        "header_align": "center",
+        "heading_color": "#111111",
+        "description_color": "#4b5563",
+        "columns_desktop": "3",
+        "card_gap": 24,
+        "card_bg": "#ffffff",
+        "border_color": "#e5e7eb",
+        "border_width": 1,
+        "card_radius": 16,
+        "card_padding": 32,
+        "card_align": "center",
+        "bg_color": "#f9fafb",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "birdlabs_community_gallery_main": {
+      "type": "birdlabs-community-gallery",
+      "blocks": {
+        "gi_1": { "type": "gallery_image", "settings": { "caption": "Morning in the garden", "author": "Sarah M." } },
+        "gi_2": { "type": "gallery_image", "settings": { "caption": "Compost bed spring", "author": "Tom R." } },
+        "gi_3": { "type": "gallery_image", "settings": { "caption": "Raised bed results", "author": "Linda K." } },
+        "gi_4": { "type": "gallery_image", "settings": { "caption": "Container garden", "author": "James P." } }
+      },
+      "block_order": ["gi_1", "gi_2", "gi_3", "gi_4"],
+      "name": "BirdLabs — Grower Gallery",
+      "settings": {
+        "badge_text": "COMMUNITY",
+        "heading": "Grower Gallery",
+        "description": "Real gardens from our community of Flora Bella growers",
+        "header_h_align": "center",
+        "header_v_align": "top",
+        "header_height": 0,
+        "badge_color": "#7cb342",
+        "badge_bg": "#f0f7e6",
+        "heading_color": "#111111",
+        "description_color": "#4b5563",
+        "columns_desktop": "4",
+        "grid_gap": 12,
+        "image_radius": 12,
+        "cta_label": "Join our WhatsApp Community",
+        "cta_url": "",
+        "cta_bg": "#7cb342",
+        "cta_color": "#ffffff",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
-    "main_community"
+    "birdlabs_stats_community",
+    "birdlabs_community_gallery_main"
   ]
 }
