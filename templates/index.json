@@ -720,13 +720,11 @@
       ],
       "name": "BirdLabs — Image Gallery",
       "settings": {
-        "heading": "",
+        "heading": "Images",
         "heading_color": "#111111",
-        "columns_desktop": "3",
-        "columns_mobile": "2",
-        "gap": 16,
-        "image_ratio": "1 / 1",
+        "thumbnail_size": 160,
         "image_radius": 8,
+        "gap": 16,
         "bg_color": "#ffffff",
         "padding_top": 60,
         "padding_bottom": 60
