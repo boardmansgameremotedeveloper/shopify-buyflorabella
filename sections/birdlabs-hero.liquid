@@ -100,17 +100,22 @@
 
 /* =========================
    SECTION SPACING CONTROL
+   padding-top uses calc() so the section always clears the
+   fixed announcement bar + header stack, with the slider value
+   adding extra breathing room on top of that offset.
+   --birdlabs-total-header-offset is set by the announcement bar
+   JS; 80px fallback covers the header height if JS is slow.
    ========================= */
 #fb-hero-{{ section.id }} {
   min-height: unset !important;
-  padding-top: {{ section.settings.padding_top }}px !important;
+  padding-top: calc(var(--birdlabs-total-header-offset, 80px) + {{ section.settings.padding_top }}px) !important;
   padding-bottom: {{ section.settings.padding_bottom }}px !important;
 }
 
 /* Mobile padding override */
 @media (max-width: 1023px) {
   #fb-hero-{{ section.id }} {
-    padding-top: {{ section.settings.padding_top_mobile }}px !important;
+    padding-top: calc(var(--birdlabs-total-header-offset, 80px) + {{ section.settings.padding_top_mobile }}px) !important;
     padding-bottom: {{ section.settings.padding_bottom_mobile }}px !important;
   }
 }
