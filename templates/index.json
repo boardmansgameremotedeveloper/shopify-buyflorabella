@@ -96,6 +96,30 @@
     "birdlabs_multicolumn_gaxYUh": {
       "type": "birdlabs-multicolumn",
       "blocks": {
+        "column_iEFTy8": {
+          "type": "column",
+          "settings": {
+            "icon_bg_color": "#ffffff",
+            "heading": "Feature title",
+            "description": "Describe this feature in a few words."
+          }
+        },
+        "column_idfrbm": {
+          "type": "column",
+          "settings": {
+            "icon_bg_color": "#ffffff",
+            "heading": "Feature title",
+            "description": "Describe this feature in a few words."
+          }
+        },
+        "column_irJwnB": {
+          "type": "column",
+          "settings": {
+            "icon_bg_color": "#ffffff",
+            "heading": "Feature title",
+            "description": "Describe this feature in a few words."
+          }
+        },
         "column_BEtDr8": {
           "type": "column",
           "settings": {
@@ -123,6 +147,9 @@
         }
       },
       "block_order": [
+        "column_iEFTy8",
+        "column_idfrbm",
+        "column_irJwnB",
         "column_BEtDr8",
         "column_ENUDU7",
         "column_p3GeCm"
