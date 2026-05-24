@@ -47,7 +47,53 @@
         "button_primary_url": "",
         "button_secondary_label": "See Real Grower Results",
         "button_secondary_url": "",
-        "show_buy_badge": false,
+        "show_buy_badge": true,
+        "buy_badge_label": "Click here to shop",
+        "padding_top": 0,
+        "padding_bottom": 24,
+        "padding_top_mobile": 16,
+        "padding_bottom_mobile": 16
+      }
+    },
+    "birdlabs_hero_PfVQnU": {
+      "type": "birdlabs-hero",
+      "blocks": {
+        "trust_item_DbMN43": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Over seventy trace minerals"
+          }
+        },
+        "trust_item_cz4n4G": {
+          "type": "trust_item",
+          "settings": {
+            "text": "Loved by organic growers"
+          }
+        },
+        "trust_item_bnA4yK": {
+          "type": "trust_item",
+          "settings": {
+            "text": "From farmers to you"
+          }
+        }
+      },
+      "block_order": [
+        "trust_item_DbMN43",
+        "trust_item_cz4n4G",
+        "trust_item_bnA4yK"
+      ],
+      "name": "BirdLabs — Hero",
+      "settings": {
+        "headline": "Wake up your soil today",
+        "subheadline": "Bio trace minerals is organic ancient formed mineral deposit That we dig up and compost, bringing all the natural microbes and biology to life",
+        "body_text": "Flora Bella Living trace mineral is made from an ancient deposit of plant coral and animal life from thousands and thousands of years ago That was encapsulated in an iron Preserving all the natural occurring biology such as beneficial, facilities, natural occurring, micro Rizal, a diverse amount of amino acids and other occurring goodies with our proprietary blend to bring the perfect balance for Micro nutrition, an optimal soil health",
+        "hero_image": "shopify://shop_images/Community_-_Square_Image_7.jpg",
+        "enable_image_animation": true,
+        "button_primary_label": "Shop Bio Trace Mix",
+        "button_primary_url": "",
+        "button_secondary_label": "See Real Grower Results",
+        "button_secondary_url": "",
+        "show_buy_badge": true,
         "buy_badge_label": "Click here to check out",
         "padding_top": 0,
         "padding_bottom": 24,
@@ -807,6 +853,7 @@
   },
   "order": [
     "birdlabs_hero_AMiadz",
+    "birdlabs_hero_PfVQnU",
     "reassurance_strip",
     "birdlabs_multicolumn_gaxYUh",
     "benefits_grid",
