@@ -39,10 +39,10 @@
       "name": "BirdLabs — Hero",
       "settings": {
         "headline": "Wake UpYour Soil",
-        "subheadline": "Bio trace minerals is organic ancient formed mineral deposit That we dig up and compost, bringing all the natural microbes and biology the life",
+        "subheadline": "Bio trace minerals is organic ancient formed mineral deposit That we dig up and compost, bringing all the natural microbes and biology to life",
         "body_text": "Flora Bella Living trace mineral is made from an ancient deposit of plant coral and animal life from thousands and thousands of years ago That was encapsulated in an iron Preserving all the natural occurring biology such as beneficial, facilities, natural occurring, micro Rizal, a diverse amount of amino acids and other occurring goodies with our proprietary blend to bring the perfect balance for Micro nutrition, an optimal soil health",
         "hero_image": "shopify://shop_images/Community_-_Square_Image_7.jpg",
-        "enable_image_animation": false,
+        "enable_image_animation": true,
         "button_primary_label": "Shop Bio Trace Mix",
         "button_primary_url": "",
         "button_secondary_label": "See Real Grower Results",
