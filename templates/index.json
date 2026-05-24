@@ -743,6 +743,7 @@
         "img_2": {
           "type": "image",
           "settings": {
+            "image": "shopify://shop_images/Bioavailable_forms.jpg",
             "link": ""
           }
         },
