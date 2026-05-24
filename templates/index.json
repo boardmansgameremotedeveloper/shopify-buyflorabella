@@ -61,10 +61,10 @@
         "r1": {
           "type": "item",
           "settings": {
-            "icon": "truck",
+            "icon": "leaf",
             "icon_color": "#d4ff00",
             "icon_bg": "#d4ff00",
-            "text": "Delivered to your doorstep with care"
+            "text": "organic living trace mineral for optimal, soil, and plant health let us take your Farm and garden to the next level"
           }
         },
         "r2": {
@@ -79,10 +79,10 @@
         "r3": {
           "type": "item",
           "settings": {
-            "icon": "message",
+            "icon": "check",
             "icon_color": "#90ffd9",
             "icon_bg": "#90ffd9",
-            "text": "Support from real growers, not bots"
+            "text": "A family owned and operated focused on customer support and bringing fantastic products to our community"
           }
         }
       },
