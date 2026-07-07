@@ -850,6 +850,34 @@
         "padding_top": 80,
         "padding_bottom": 80
       }
+    },
+    "17834454880ea4f3ca": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_0df90e7_jPn8Jw": {
+          "type": "ai_gen_block_0df90e7",
+          "settings": {
+            "heading_text": "Glowing Heading",
+            "heading_tag": "h2",
+            "text_alignment": "center",
+            "font_size": 48,
+            "font_weight": "700",
+            "text_color": "#FFFFFF",
+            "glow_color": "#334FB4",
+            "glow_blur": 36,
+            "animation_speed": 2,
+            "desktop_width_percent": 100,
+            "padding_top": 40,
+            "padding_bottom": 40,
+            "padding_horizontal": 20
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_0df90e7_jPn8Jw"
+      ],
+      "settings": {}
     }
   },
   "order": [
@@ -867,6 +895,7 @@
     "birdlabs_videoreels_jrHRXN",
     "community_callout",
     "birdlabs_image_gallery_main",
-    "birdlabs_content_block_main"
+    "birdlabs_content_block_main",
+    "17834454880ea4f3ca"
   ]
 }
