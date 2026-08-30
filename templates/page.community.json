@@ -111,6 +111,7 @@
     }
   },
   "order": [
+    "main_community",
     "birdlabs_stats_community",
     "birdlabs_community_gallery_main"
   ]
